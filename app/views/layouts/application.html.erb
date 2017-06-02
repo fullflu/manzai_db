@@ -12,9 +12,11 @@
         <h1 class="grid-6"><a href="/">漫才データベースTOP</a></h1>
         <% if user_signed_in? %>
           <div class="user_nav grid-6">
-          <span> <%= current_user.nickname %>
+          <!-- <span class="entry_button" style="float: left"> <%= current_user.nickname %>さん -->
+          <span > <%= current_user.nickname %>さん
           <ul class="user__info">
-          <li>
+          <!-- <li class="entry_button" style="float: left"> -->
+          <li　style="list-style:none;>
            <a href="/users/<%= current_user.id %>">マイページ</a>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
           </li>
