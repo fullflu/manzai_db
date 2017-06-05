@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :move_to_index, except: :index
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -10,12 +11,14 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    product = Product.find(params[:id])
+    #product = Product.find(params[:id])
   end
 
   # GET /products/new
   def new
     #@product = Product.new
+    keyword = "%#{params[:keyword]}%"
+    @products = Product.where('title LIKE(?)', "%#{params[:keyword]}%").limit(20)
   end
 
   # GET /products/1/edit
@@ -72,4 +75,11 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:user_id, :group_id, :title)
     end
+
+    def move_to_index
+        unless user_signed_in?
+            redirect_to controller: 'groups', action: 'top'
+        end
+    end
+
 end

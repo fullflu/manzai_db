@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'search_group'
       get 'create_group'
       get 'create_title'
+      #get 'top'
     end
   end
   root 'groups#top'
