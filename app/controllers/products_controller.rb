@@ -18,7 +18,13 @@ class ProductsController < ApplicationController
   def new
     #@product = Product.new
     keyword = "%#{params[:keyword]}%"
-    @products = Product.where('title LIKE(?)', "%#{params[:keyword]}%").limit(20)
+    if params[:keyword].present?
+      @groups = Group.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
+    else
+      @groups = []
+    end
+    #@groups = Group.all
+    #@products = Product.where('title LIKE(?)', "%#{params[:keyword]}%").limit(20)
   end
 
   # GET /products/1/edit

@@ -1,4 +1,56 @@
-<h1>New Product</h1>
+  <div id="main_cnt_wrapper">
+    <div id="yjContentsBody">
+      <div class="yjContainer">
+        <span class="yjGuid"><a id="yjContentsStart" name="yjContentsStart"></a><img alt="ここから本文です" height="1" src="http://i.yimg.jp/yui/jp/tmpl/1.1.0/audionav.gif" width="1"></span>
+        <div id="yjMain">
+          <article class="section">
+            <div class="container">
+              <header class="header header--section">
+                <h2 class="text-middle">
+                  <i class="icon-movie color-gray-light"></i>投稿するグループを検索
+                </h2>
+              </header>
+              <%= form_tag('/products/new', method: :get) do %>
+                <input class="search__query" name="keyword" placeholder="グループ名で検索" type="text" value=""><button class="btn-search" title="検索" type="submit"><i class="icon-search"></i></button></input>
+              <% end %>
+              <form accept-charset="utf-8" action="/" class="js-search-submit" method="get">
+              </form>
+            </div>
+          </article>
+          <article class="section">
+            <div class="container">
+              <header class="header header--section">
+                <h2 class="text-middle">
+                  <i class="icon-movie color-gray-light"></i>検索結果
+                </h2>
+              </header>
+              <ul class="listview js-lazy-load-images">
+                <% @groups.each do |group| %>
+                <li>
+                  <a class="listview__element--right-icon" href="/groups/<%= group.id %>" title="<%= group.name %>">
+                    <div class="position-right p1em">
+                      <i class="icon-chevron-right color-sub"></i>
+                    </div>
+                    <div class="row no-space-bottom">
+                      <div class="col2">
+                        <div class="thumbnail thumbnail--movies">
 
+                        </div>
+                      </div>
+                      <div class="col6 push6">
+                        <h3 class="text-middle text-break">
+                          <span class="color-sub"><%= group.name %></span>
+                        </h3>
+
+
+                    </div>
+                  </a>
+                </li>
+                <% end %>
+              </ul>
+            </div>
+          </article>
+        </div>
+        <div id="yjSub">
 
 <%= link_to 'Back', root_path %>

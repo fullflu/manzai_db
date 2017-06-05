@@ -24,6 +24,7 @@ class GroupsController < ApplicationController
   def edit
   end
 
+
   # POST /groups
   # POST /groups.json
   def create
