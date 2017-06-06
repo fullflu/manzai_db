@@ -79,7 +79,8 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:user_id, :group_id, :title)
+      #binding.pry
+      params.require(:product).permit(:title).merge(user_id: current_user.id, group_id: params[:group_id])
     end
 
     def move_to_index
