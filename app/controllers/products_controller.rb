@@ -14,6 +14,11 @@ class ProductsController < ApplicationController
     #product = Product.find(params[:id])
   end
 
+  def create_title
+    @product = Product.new
+    @product.user_id = params[:user_id]
+    @product.group_id = params[:group_id]
+  end
 
   # GET /products/new
   def new
@@ -36,6 +41,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
+    binding.pry
 
     respond_to do |format|
       if @product.save
