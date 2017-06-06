@@ -4,8 +4,6 @@ Rails.application.routes.draw do
   resources :groups
   resources :products do
     collection do
-      get 'search_group'
-      get 'create_group'
       get 'create_title'
       #get 'top'
     end

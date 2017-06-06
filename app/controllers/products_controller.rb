@@ -15,9 +15,12 @@ class ProductsController < ApplicationController
   end
 
   def create_title
+    binding.pry
     @product = Product.new
     @product.user_id = params[:user_id]
     @product.group_id = params[:group_id]
+    @group = Group.find_by(id: @product.group_id)
+    binding.pry
   end
 
   # GET /products/new
