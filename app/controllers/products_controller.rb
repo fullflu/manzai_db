@@ -15,25 +15,15 @@ class ProductsController < ApplicationController
   end
 
   def create_title
-    binding.pry
     @product = Product.new
-    @product.user_id = params[:user_id]
+    @product.user_id = current_user.id
     @product.group_id = params[:group_id]
     @group = Group.find_by(id: @product.group_id)
-    binding.pry
+    #binding.pry
   end
 
   # GET /products/new
   def new
-    #@product = Product.new
-    keyword = "%#{params[:keyword]}%"
-    if params[:keyword].present?
-      @groups = Group.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
-    else
-      @groups = []
-    end
-    #@groups = Group.all
-    #@products = Product.where('title LIKE(?)', "%#{params[:keyword]}%").limit(20)
   end
 
   # GET /products/1/edit

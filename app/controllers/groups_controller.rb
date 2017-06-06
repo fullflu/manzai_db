@@ -43,7 +43,7 @@ class GroupsController < ApplicationController
     #binding.pry
     #redirect_to controller: 'products', action: 'create_title', :user_id => current_user.id ,:group_id => Group.find_by(name: params[:group][:name]).id
     tmp_group_id = Group.find_by(name: params[:group][:name]).id
-    redirect_to :controller => 'products', :action => "create_title", group_id: tmp_group_id, user_id: current_user.id
+    redirect_to :controller => 'products', :action => "create_title", group_id: tmp_group_id
     #redirect_to "/products/create_title"
     # redirect_to :controller => 'products', :action => "create_title(:group_id => #{tmp_group_id})"
 
