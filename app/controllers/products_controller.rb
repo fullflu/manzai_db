@@ -14,9 +14,6 @@ class ProductsController < ApplicationController
     #product = Product.find(params[:id])
   end
 
-  def create_title
-    binding.pry
-  end
 
   # GET /products/new
   def new

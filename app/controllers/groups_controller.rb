@@ -29,17 +29,21 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(group_params)
+    @group.save
+    #binding.pry
+    redirect_to controller: 'products', action: 'create', :group_id => Group.find_by(name: params[:group][:name]).id
 
-    respond_to do |format|
-      if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
-        format.json { render :show, status: :created, location: @group }
-      else
-        format.html { render :new }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
-    end
-    redirect_to controller: 'products', action: 'create_title'
+
+    # respond_to do |format|
+    #   if @group.save
+    #     #format.html { redirect_to @group, notice: 'Group was successfully created.' }
+    #     #format.json { render :show, status: :created, location: @group }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @group.errors, status: :unprocessable_entity }
+    #   end
+    # end
+    # redirect_to controller: 'products', action: 'create_title'
   end
 
   # PATCH/PUT /groups/1
