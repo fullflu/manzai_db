@@ -39,6 +39,7 @@ class GroupsController < ApplicationController
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
+    redirect_to controller: 'products', action: 'create_title'
   end
 
   # PATCH/PUT /groups/1
