@@ -24,6 +24,16 @@ class GroupsController < ApplicationController
   def edit
   end
 
+  def search_group
+    keyword = "%#{params[:keyword]}%"
+    if params[:keyword].present?
+      @groups = Group.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
+    else
+      @groups = []
+    end
+  end
+
+
 
   # POST /groups
   # POST /groups.json
