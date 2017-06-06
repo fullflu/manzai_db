@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get 'search_group'
     end
   end
+  get 'products' => 'products#index_all'
   # resources :groups
   # resources :products do
   #   collection do

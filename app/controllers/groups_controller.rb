@@ -13,6 +13,8 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    redirect_to group_products_path group_id: params[:id]
+    #@titles = Product.where(group_id: params[:id])
   end
 
   # GET /groups/new

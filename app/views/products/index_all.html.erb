@@ -1,20 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-
-<h1>
-  <%= @group.name -%>のページ
-</h1>
-
-<p>
-  <strong>Boke:</strong>
-  <%= @group.boke %>
-</p>
-
-<p>
-  <strong>Tsukkomi:</strong>
-  <%= @group.tsukkomi %>
-</p>
-
 <h1>タイトル一覧</h1>
 
 <table>
@@ -43,4 +28,5 @@
 
 <br>
 
-<%= link_to "新しく#{@group.name}のタイトルを作る", create_title_group_products_path %>
+
+<%= link_to 'トップに戻る', root_path %>
