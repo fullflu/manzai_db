@@ -20,11 +20,12 @@
     <li style="border-bottom: dotted 1px">
       <div class="thumbnail__caption">
         <p>
-          <%= comment.daihon %>
           <% if comment.tsukkomi %>
-            <%= "by #{comment.product.group.tsukkomi}（つっこみ）" %>
+            <%= "#{comment.product.group.tsukkomi}（つっこみ）"-%>
+            <%= "「#{comment.daihon}」"%>
           <% else %>
-            <%= "by #{comment.product.group.boke}（ぼけ）" %>
+            <%= "#{comment.product.group.boke}（ぼけ）" -%>
+            <%= "「#{comment.daihon}」" %>
           <% end %>
         </p>
       </div>
@@ -35,11 +36,17 @@
   <div class="container">
     <% if current_user %>
      <% if current_user.id == @product.user_id %>
-      次は<%= @tsukkomi_next %>を入力してください
       <%= form_for [@product, @comment] do |f|%>
-      <%= f.hidden_field :tsukkomi, :value => @tsukkomi_next_flg %>
+      <div class="tsukkomi_button">
+      <%= f.radio_button :tsukkomi, true%>
+      <%= f.label :tsukkomi, "つっこみ", :value => true%>
+      <%= f.radio_button :tsukkomi, false%>
+      <%= f.label :tsukkomi, "ぼけ", :value => false%>
+      </div>
+      <div>
       <%= f.hidden_field :prev_id, :value => @last_id %>
-      <%= f.text_field :daihon, :placeholder => "台本を入力してください" %>
+      <%= f.text_area :daihon, :placeholder => "台本を入力してください" %>
+      </div>
       <%= f.submit %>
       <% end %>
      <% end %>
