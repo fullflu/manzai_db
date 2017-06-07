@@ -15,28 +15,38 @@
   <%= @product.title %>
 </p>
 
-  <div class="container"> 
-    <% if current_user %>
-     <% if current_user.id == @product.user_id %>
-      <%= form_for [@product, @comment] do |f|%>
-        <textarea cols="30" name="daihon" placeholder="コメントする" rows="2"></textarea>
-        <input type="submit" value="SENT">
-      <% end %>
-     <% end %>
-    <% end %>
-  </div>
-
     <ul style="padding: 0">
     <% @comments_view.each do |comment| %>
     <li style="border-bottom: dotted 1px">
       <div class="thumbnail__caption">
         <p>
           <%= comment.daihon %>
+          <% if comment.tsukkomi %>
+            <%= "by #{comment.product.group.tsukkomi}（つっこみ）" %>
+          <% else %>
+            <%= "by #{comment.product.group.boke}（ぼけ）" %>
+          <% end %>
         </p>
       </div>
     </li>
     <% end %>
     </ul>
+
+  <div class="container">
+    <% if current_user %>
+     <% if current_user.id == @product.user_id %>
+      次は<%= @tsukkomi_next %>を入力してください
+      <%= form_for [@product, @comment] do |f|%>
+      <%= f.hidden_field :tsukkomi, :value => @tsukkomi_next_flg %>
+      <%= f.hidden_field :prev_id, :value => @last_id %>
+      <%= f.text_field :daihon, :placeholder => "台本を入力してください" %>
+      <%= f.submit %>
+      <% end %>
+     <% end %>
+    <% end %>
+  </div>
+
+
 
 
 <%= link_to 'Edit', edit_product_path(@product) %>

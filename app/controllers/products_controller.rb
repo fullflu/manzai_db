@@ -25,10 +25,27 @@ class ProductsController < ApplicationController
     comments_hash = ary.to_h
     comment_view = comments.find_by(prev_id: nil)
     @comments_view = []
-    for i in 1..comment_id.length
-      @comments_view << comment_view
+    @comments_view << comment_view
+    for i in 1..comment_id.length-1
       comment_view = comments_hash[comment_view.post_id]
+      @comments_view << comment_view
     end
+    # if params[:update_last]
+    #   comment_view.update(post_id: params[:update_last])
+    # end
+    if comment_id.length == 0
+      @tsukkomi_next_flg = 1
+      @tsukkomi_next = "つっこみ"
+    else
+      if comment_view.tsukkomi
+        @tsukkomi_next = "ぼけ"
+      else
+        @tsukkomi_next = "つっこみ"
+      end
+      @tsukkomi_next_flg = !comment_view.tsukkomi
+      @last_id = comment_view.id
+    end
+
     @comment = Comment.new
     #group_name = Product.find(params[:id]).group_id
     #product = Product.find(params[:id])
