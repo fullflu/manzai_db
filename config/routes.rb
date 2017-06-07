@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         get 'create_title'
         #get 'top'
       end
+      resources :comments
     end
     collection do
       get 'search_group'
