@@ -18,6 +18,17 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
+    comments = @product.comments
+    comment_id = comments.select("id")
+    comment_id = comment_id.map{|item| item.id}
+    ary=[comment_id,comments].transpose
+    comments_hash = ary.to_h
+    comment_view = comments.find_by(prev_id: nil)
+    @comments_view = []
+    for i in 1..comment_id.length
+      @comments_view << comment_view
+      comment_view = comments_hash[comment_view.post_id]
+    end
     @comment = Comment.new
     #group_name = Product.find(params[:id]).group_id
     #product = Product.find(params[:id])

@@ -26,6 +26,18 @@
     <% end %>
   </div>
 
+    <ul style="padding: 0">
+    <% @comments_view.each do |comment| %>
+    <li style="border-bottom: dotted 1px">
+      <div class="thumbnail__caption">
+        <p>
+          <%= comment.daihon %>
+        </p>
+      </div>
+    </li>
+    <% end %>
+    </ul>
+
 
 <%= link_to 'Edit', edit_product_path(@product) %>
 <%= link_to "#{@product.group.name}のタイトル一覧", group_products_path(@product.group.id) %>
