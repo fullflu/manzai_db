@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    #group_name = Product.find(params[:id]).group_id
     #product = Product.find(params[:id])
   end
 

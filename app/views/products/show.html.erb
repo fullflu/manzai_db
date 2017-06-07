@@ -15,5 +15,8 @@
   <%= @product.title %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'タイトル一覧に戻る', products_path %>
+
+
+<%= link_to 'Edit', edit_product_path(@product) %>
+<%= link_to "#{@product.group.name}のタイトル一覧", group_products_path(@product.group.id) %>
+<%= link_to '全タイトル一覧', products_path %>
