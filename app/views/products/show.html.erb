@@ -7,7 +7,7 @@
 
 <p>
   <strong>グループ:</strong>
-  <%= @product.group.name %>
+  <%= link_to @product.group.name, group_products_path(@product.group.id) %>
 </p>
 
 <p>
@@ -16,6 +16,7 @@
 </p>
 
     <ul style="padding: 0">
+    <% if @last_id %>
     <% @comments_view.each do |comment| %>
     <li style="border-bottom: dotted 1px">
       <div class="thumbnail__caption">
@@ -31,12 +32,17 @@
       </div>
     </li>
     <% end %>
+    <% end %>
     </ul>
 
   <div class="container">
     <% if current_user %>
      <% if current_user.id == @product.user_id %>
       <%= form_for [@product, @comment] do |f|%>
+        <% if @last_id %>
+         次は<%= @tsukkomi_next %>を入力してください
+        <% else %>
+        つっこみ、ぼけのどちらから漫才が始まるか選んでください
       <div class="tsukkomi_button">
       <%= f.radio_button :tsukkomi, true%>
       <%= f.label :tsukkomi, "つっこみ", :value => true%>
@@ -44,8 +50,12 @@
       <%= f.label :tsukkomi, "ぼけ", :value => false%>
       </div>
       <div>
+      <% end %>
+      <div class="daihon_input">
+      <%= f.hidden_field :tsukkomi, :value => @tsukkomi_next_flg %>
       <%= f.hidden_field :prev_id, :value => @last_id %>
       <%= f.text_area :daihon, :placeholder => "台本を入力してください" %>
+      </div>
       </div>
       <%= f.submit %>
       <% end %>
@@ -55,7 +65,7 @@
 
 
 
-
-<%= link_to 'Edit', edit_product_path(@product) %>
+<br>
+<%= link_to 'タイトルの編集', edit_product_path(@product) %>
 <%= link_to "#{@product.group.name}のタイトル一覧", group_products_path(@product.group.id) %>
 <%= link_to '全タイトル一覧', products_path %>
