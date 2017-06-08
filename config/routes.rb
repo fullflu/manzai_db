@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     end
   end
   get 'products' => 'products#index_all'
+
   # resources :groups
   # resources :products do
   #   collection do

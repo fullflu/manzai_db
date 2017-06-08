@@ -7,17 +7,18 @@ class ProductsController < ApplicationController
   def index
     #binding.pry
     @group = Group.find_by(id: params[:group_id])
-    @products = Product.where(group_id: params[:group_id])
+    @products = Product.where(group_id: params[:group_id]).includes([:group, :user])
   end
 
   def index_all
-    @products = Product.all
+    @products = Product.all.includes([:group, :user])
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
+    #binding.pry
     comments = @product.comments
     comment_id = comments.select("id")
     comment_id = comment_id.map{|item| item.id}
@@ -65,9 +66,14 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    #binding.pry
+    @group = Group.find(@product.group_id)
+    # binding.pry
     #group_id = Product.find(params[:id]).group_id
     #params[:group_id] = group_id
+  end
+
+  def edit_group
+    group = Group.find(@product.group_id)
   end
 
   # POST /products
@@ -90,14 +96,22 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    respond_to do |format|
-      if @product.update(product_params_edit)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
-      else
-        format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+    #binding.pry
+    new_group_name = params.require(:group)[:name]
+    new_group = Group.find_by(name: new_group_name)
+    if new_group
+      @product.group_id = new_group.id
+      respond_to do |format|
+        if @product.update(product_params_edit)
+          format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+          format.json { render :show, status: :ok, location: @product }
+        else
+          format.html { render :edit }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to :controller => 'groups', :action => "new", name: new_group_name, product_id: params[:id], title: params.require(:product)[:title]
     end
   end
 
@@ -125,8 +139,8 @@ class ProductsController < ApplicationController
 
     def product_params_edit
       #binding.pry
-      group_id = Product.find(params[:id]).group_id
-      params.require(:product).permit(:title).merge(user_id: current_user.id, group_id: group_id)
+      #group_id = Product.find(params[:id]).group_id
+      params.require(:product).permit(:title).merge(user_id: current_user.id, group_id: @product.group_id)
     end
 
     def move_to_index

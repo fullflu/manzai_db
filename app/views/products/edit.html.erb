@@ -11,9 +11,17 @@
     </div>
   <% end %>
 
+  <h2>
+  <%= "#{@product.group.name}の#{@product.title}" %>
+  </h2>
+
+  <%= fields_for @group, new_group_path do |c| %>
+    <%= c.label :name, value: "グループ名を変更" %><br>
+    <%= c.text_field :name %>
+    <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title, value: "タイトルを変更" %><br>
     <%= f.text_field :title %>
   </div>
   <div class="actions">
@@ -21,5 +29,5 @@
   </div>
 <% end %>
 
-<%= link_to 'Show', @product %> |
+<%= link_to 'Show', @product %>
 <%= link_to 'トップへ戻る', root_path %>

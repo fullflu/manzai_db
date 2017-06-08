@@ -18,6 +18,13 @@ class CommentsController < ApplicationController
         redirect_to controller: :products, action: :show, id: params[:product_id]
     end
 
+    def destroy
+        comment = Comment.find(params[:id])
+        if comment.product.user_id == current_user.id
+            comment.destroy
+        end
+    end
+
     private
     def create_params
         #binding.pry

@@ -19,7 +19,14 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
+    #binding.pry
     @group = Group.new
+    if params[:name]
+      @group.name = params[:name]
+      @product_id = params[:product_id]
+      @product = Product.find(@product_id)
+      @title = params[:title]
+    end
   end
 
   # GET /groups/1/edit
@@ -42,12 +49,17 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.save
-    #binding.pry
-    #redirect_to controller: 'products', action: 'create_title', :user_id => current_user.id ,:group_id => Group.find_by(name: params[:group][:name]).id
-    tmp_group_id = Group.find_by(name: params[:group][:name]).id
-    redirect_to :controller => 'products', :action => "create_title", group_id: tmp_group_id
-    #redirect_to "/products/create_title"
-    # redirect_to :controller => 'products', :action => "create_title(:group_id => #{tmp_group_id})"
+    # binding.pry
+    product = params.require(:group)[:product]
+    if product
+      #binding.pry
+      product_updating = Product.find(product[:product_id])
+      product_updating.update_attributes(group_id: @group.id, title: product[:title])
+      redirect_to :controller => 'products', :action => "show", :id => product[:product_id]
+    else
+      tmp_group_id = Group.find_by(name: params[:group][:name]).id
+      redirect_to :controller => 'products', :action => "create_title", group_id: tmp_group_id
+    end
 
 
     # respond_to do |format|
