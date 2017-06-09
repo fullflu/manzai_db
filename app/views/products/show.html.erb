@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>投稿者:</strong>
+  <%= @product.user.nickname -%>さん
+</p>
+
+<p>
+  <strong>グループ:</strong>
+  <%= link_to @product.group.name, group_products_path(@product.group.id) %>
+</p>
+
+<p>
+  <strong>タイトル:</strong>
+  <%= @product.title %>
+</p>
+
+    <ul style="padding: 0">
+    <% if @last_id %>
+    <% @comments_view.each do |comment| %>
+    <li style="border-bottom: dotted 1px">
+      <div class="thumbnail__caption">
+        <p>
+          <% if comment.tsukkomi %>
+            <%= "#{comment.product.group.tsukkomi}（つっこみ）"-%>
+            <%= "「#{comment.daihon}」"%>
+          <% else %>
+            <%= "#{comment.product.group.boke}（ぼけ）" -%>
+            <%= "「#{comment.daihon}」" %>
+          <% end %>
+          <% if user_signed_in? && current_user.id == @product.user_id %>
+            <%= link_to '編集', "/comments/#{comment.id}/edit", method: :get %>
+            <%= link_to '削除', "/comments/#{comment.id}", method: :delete %>
+          <% end %>
+        </p>
+      </div>
+    </li>
+    <% end %>
+    <% end %>
+    </ul>
+
+  <div class="container">
+    <% if current_user %>
+     <% if current_user.id == @product.user_id %>
+      <%= form_for [@product, @comment] do |f|%>
+        <% if @last_id %>
+         次は<%= @tsukkomi_next %>を入力してください
+        <% else %>
+        つっこみ、ぼけのどちらから漫才が始まるか選んでください
+      <div class="tsukkomi_button">
+      <%= f.radio_button :tsukkomi, true%>
+      <%= f.label :tsukkomi, "つっこみ", :value => true%>
+      <%= f.radio_button :tsukkomi, false%>
+      <%= f.label :tsukkomi, "ぼけ", :value => false%>
+      </div>
+      <div>
+      <% end %>
+      <div class="daihon_input">
+      <%= f.hidden_field :tsukkomi, :value => @tsukkomi_next_flg %>
+      <%= f.hidden_field :prev_id, :value => @last_id %>
+      <%= f.text_area :daihon, :placeholder => "台本を入力してください" %>
+      </div>
+      </div>
+      <%= f.submit %>
+      <% end %>
+     <% end %>
+    <% end %>
+  </div>
+
+
+
+<br>
+<%= link_to 'タイトルの編集', edit_product_path(@product) %>
+<%= link_to "#{@product.group.name}のタイトル一覧", group_products_path(@product.group.id) %>
+<%= link_to '全タイトル一覧', products_path %>

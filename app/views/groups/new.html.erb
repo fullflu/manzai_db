@@ -1,5 +1,45 @@
-<h1>New Group</h1>
+<h1>新しくグループを作ってください</h1>
 
-<%= render 'form' %>
+<% if @product_id %>
+<h2> 
+ <%= "#{@group.name} はまだ登録されていません。ぼけとつっこみの名前を登録してください！" %>
+</h2>
+<% end %>
+<%= form_for(@group) do |f| %>
+  <% if @group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+      <% @group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if @product %>
+    <%= f.fields_for @product, products_path do |pro| %>
+        <%= pro.hidden_field :product_id, :value => @product_id %>
+        <%= pro.hidden_field :title, :value => @title %>
+        <% end %>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :boke %><br>
+    <%= f.text_field :boke %>
+  </div>
+  <div class="field">
+    <%= f.label :tsukkomi %><br>
+    <%= f.text_field :tsukkomi %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
 
 <%= link_to 'グループ一覧に戻る', groups_path %>

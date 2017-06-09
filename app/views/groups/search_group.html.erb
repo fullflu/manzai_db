@@ -1,0 +1,62 @@
+  <div id="main_cnt_wrapper">
+    <div id="yjContentsBody">
+      <div class="yjContainer">
+        <span class="yjGuid"><a id="yjContentsStart" name="yjContentsStart"></a><img alt="ここから本文です" height="1" src="http://i.yimg.jp/yui/jp/tmpl/1.1.0/audionav.gif" width="1"></span>
+        <div id="yjMain">
+          <article class="section">
+            <div class="container">
+              <header class="header header--section">
+                <h2 class="text-middle">
+                  <i class="icon-movie color-gray-light"></i>投稿するグループを検索
+                </h2>
+              </header>
+              <%= form_tag('/groups/search_group', method: :get) do %>
+                <input class="search__query" name="keyword" placeholder="グループ名で検索" type="text" value=""><button class="btn-search" title="検索" type="submit"><i class="icon-search"></i></button></input>
+              <% end %>
+              <form accept-charset="utf-8" action="/" class="js-search-submit" method="get">
+              </form>
+            </div>
+          </article>
+          <article class="section">
+            <div class="container">
+              <header class="header header--section">
+                <h2 class="text-middle">
+                  <i class="icon-movie color-gray-light"></i>検索結果
+                </h2>
+              </header>
+                          <% if @groups.length > 0 %>
+              <ul class="listview js-lazy-load-images">
+                <% @groups.each do |group| %>
+                <li>
+                  <a class="listview__element--right-icon" href="/groups/<%= group.id %>/products/create_title" title="<%= group.name %>">
+                    <div class="position-right p1em">
+                      <i class="icon-chevron-right color-sub"></i>
+                    </div>
+                    <div class="row no-space-bottom">
+                      <div class="col2">
+                        <div class="thumbnail thumbnail--movies">
+
+                        </div>
+                      </div>
+                      <div class="col6 push6">
+                        <h3 class="text-middle text-break">
+                          <span class="color-sub"><%= group.name %></span>
+                        </h3>
+
+
+                    </div>
+                  </a>
+                </li>
+                <% end %>
+              </ul>
+
+            <% end%>
+            </div>
+            <h2 style="display: inline">
+            新しくグループを作成して投稿しますか？ <%= button_to 'グループを作成', "/groups/new", method: :get %>
+            </h2>
+          </article>
+        </div>
+        <div id="yjSub">
+
+<%= link_to 'トップへ戻る', root_path %>

@@ -1,7 +1,27 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users, only: :show
-  resources :groups
+  resources :groups, shallow: true do
+    resources :products do
+      collection do
+        get 'create_title'
+        #get 'top'
+      end
+      resources :comments
+    end
+    collection do
+      get 'search_group'
+    end
+  end
+  get 'products' => 'products#index_all'
+
+  # resources :groups
+  # resources :products do
+  #   collection do
+  #     get 'create_title'
+  #     #get 'top'
+  #   end
+  # end
   root 'groups#top'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

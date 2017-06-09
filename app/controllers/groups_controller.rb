@@ -13,31 +13,65 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    redirect_to group_products_path group_id: params[:id]
+    #@titles = Product.where(group_id: params[:id])
   end
 
   # GET /groups/new
   def new
+    #binding.pry
     @group = Group.new
+    if params[:name]
+      @group.name = params[:name]
+      @product_id = params[:product_id]
+      @product = Product.find(@product_id)
+      @title = params[:title]
+    end
   end
 
   # GET /groups/1/edit
   def edit
   end
 
+  def search_group
+    keyword = "%#{params[:keyword]}%"
+    if params[:keyword].present?
+      @groups = Group.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
+    else
+      @groups = []
+    end
+  end
+
+
+
   # POST /groups
   # POST /groups.json
   def create
     @group = Group.new(group_params)
-
-    respond_to do |format|
-      if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
-        format.json { render :show, status: :created, location: @group }
-      else
-        format.html { render :new }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
+    @group.save
+    # binding.pry
+    product = params.require(:group)[:product]
+    if product
+      #binding.pry
+      product_updating = Product.find(product[:product_id])
+      product_updating.update_attributes(group_id: @group.id, title: product[:title])
+      redirect_to :controller => 'products', :action => "show", :id => product[:product_id]
+    else
+      tmp_group_id = Group.find_by(name: params[:group][:name]).id
+      redirect_to :controller => 'products', :action => "create_title", group_id: tmp_group_id
     end
+
+
+    # respond_to do |format|
+    #   if @group.save
+    #     #format.html { redirect_to @group, notice: 'Group was successfully created.' }
+    #     #format.json { render :show, status: :created, location: @group }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @group.errors, status: :unprocessable_entity }
+    #   end
+    # end
+    # redirect_to controller: 'products', action: 'create_title'
   end
 
   # PATCH/PUT /groups/1
