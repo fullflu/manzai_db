@@ -66,6 +66,9 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    if current_user.id != @product.user_id
+      redirect_to :controller => 'products', :action => 'show', id: params[:id]
+    end
     @group = Group.find(@product.group_id)
     # binding.pry
     #group_id = Product.find(params[:id]).group_id
@@ -96,32 +99,41 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    #binding.pry
-    new_group_name = params.require(:group)[:name]
-    new_group = Group.find_by(name: new_group_name)
-    if new_group
-      @product.group_id = new_group.id
-      respond_to do |format|
-        if @product.update(product_params_edit)
-          format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-          format.json { render :show, status: :ok, location: @product }
-        else
-          format.html { render :edit }
-          format.json { render json: @product.errors, status: :unprocessable_entity }
+    if @product.user_id == current_user.id
+      #binding.pry
+      new_group_name = params.require(:group)[:name]
+      new_group = Group.find_by(name: new_group_name)
+      if new_group
+        @product.group_id = new_group.id
+        respond_to do |format|
+          if @product.update(product_params_edit)
+            format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+            format.json { render :show, status: :ok, location: @product }
+          else
+            format.html { render :edit }
+            format.json { render json: @product.errors, status: :unprocessable_entity }
+          end
         end
+      else
+        redirect_to :controller => 'groups', :action => "new", name: new_group_name, product_id: params[:id], title: params.require(:product)[:title]
       end
     else
-      redirect_to :controller => 'groups', :action => "new", name: new_group_name, product_id: params[:id], title: params.require(:product)[:title]
+      redirect_to :controller => 'products', :action => 'show', id: params[:id]
     end
+
   end
 
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
-      format.json { head :no_content }
+    if @product.user_id == current_user.id
+      @product.destroy
+      respond_to do |format|
+        format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to :controller => 'products', :action => 'show', id: params[:id]
     end
   end
 

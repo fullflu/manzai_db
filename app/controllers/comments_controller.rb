@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+    before_action :move_to_index, except: [:index, :show, :index_all]
     def new
         @product = Product.find(params[:product_id])
         @comment = Comment.new
@@ -7,6 +8,10 @@ class CommentsController < ApplicationController
     def add
         @post_comment = Comment.find(params[:id])
         @product = Product.find(@post_comment.product_id)
+        if current_user.id != @product.user_id
+            redirect_to controller: :products, action: :show, id: @product.id
+        end
+
         if @post_comment.prev_id
             @prev_comment = Comment.find(@post_comment.prev_id)
             @prev_comment_id = @prev_comment.id
@@ -41,7 +46,7 @@ class CommentsController < ApplicationController
     def update
         #binding.pry
         comment = Comment.find(params[:id])
-        if comment.product.user_id == current_user.id
+        if comment.product.user_id != current_user.id
             comment.update(update_params)
         end
         redirect_to controller: :products, action: :show, id: comment.product_id
@@ -49,6 +54,9 @@ class CommentsController < ApplicationController
 
     def edit
         @comment = Comment.find(params[:id])
+        if current_user.id != @comment.product.user_id
+            redirect_to controller: :products, action: :show, id: @comment.product_id
+        end
         if @comment.prev_id
             @prev_comment = Comment.find(@comment.prev_id)
         end
@@ -61,6 +69,9 @@ class CommentsController < ApplicationController
 
     def destroy
         comment = Comment.find(params[:id])
+        if current_user.id != comment.product.user_id
+            redirect_to controller: :products, action: :show, id: comment.product_id
+        end
         if comment.product.user_id == current_user.id
             if comment.prev_id
                 prev_comment = Comment.find(comment.prev_id)
@@ -95,5 +106,10 @@ class CommentsController < ApplicationController
     end
     def update_params
         params.require("comment").permit(:daihon)
+    end
+    def move_to_index
+        unless user_signed_in?
+            redirect_to controller: 'groups', action: 'top'
+        end
     end
 end
