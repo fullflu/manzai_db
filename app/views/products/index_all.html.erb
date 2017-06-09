@@ -19,8 +19,10 @@
         <td><%= link_to product.group.name, group_products_path(product.group.id) %></td>
         <td><%= product.title %></td>
         <td><%= link_to '詳細', product %></td>
+          <% if user_signed_in? && current_user.id == product.user_id %>
         <td><%= link_to '編集', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         <% end %>
       </tr>
     <% end %>
   </tbody>

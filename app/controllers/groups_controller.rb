@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :move_to_index, except: [:index, :show, :top]
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   # GET /groups
@@ -107,5 +108,10 @@ class GroupsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
       params.require(:group).permit(:name, :boke, :tsukkomi)
+    end
+    def move_to_index
+        unless user_signed_in?
+            redirect_to controller: 'groups', action: 'top'
+        end
     end
 end
