@@ -1,3 +1,7 @@
+<h2>
+<%= "#{@group.name}のタイトルを作る" %>
+</h2>
+
 <%= form_for [@group, @product] do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">

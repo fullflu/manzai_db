@@ -50,9 +50,9 @@
         <% else %>
             つっこみ、ぼけのどちらから漫才が始まるか選んでください
           <div class="tsukkomi_button">
-          <%= f.radio_button :tsukkomi, true%>
+          <%= f.radio_button :tsukkomi, true, :checked => true %>
           <%= f.label :tsukkomi, "つっこみ", :value => true%>
-          <%= f.radio_button :tsukkomi, false%>
+          <%= f.radio_button :tsukkomi, false, presence: true%>
           <%= f.label :tsukkomi, "ぼけ", :value => false%>
           </div>
           <div>

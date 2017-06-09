@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
-    #binding.pry
+    # binding.pry
     comments = @product.comments
     comment_id = comments.select("id")
     comment_id = comment_id.map{|item| item.id}
@@ -83,7 +83,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-    #binding.pry
+    # binding.pry
 
     respond_to do |format|
       if @product.save
