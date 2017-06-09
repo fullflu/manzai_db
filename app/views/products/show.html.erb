@@ -29,6 +29,7 @@
             <%= "「#{comment.daihon}」" %>
           <% end %>
           <% if user_signed_in? && current_user.id == @product.user_id %>
+            <%= link_to '編集', "/comments/#{comment.id}/edit", method: :get %>
             <%= link_to '削除', "/comments/#{comment.id}", method: :delete %>
           <% end %>
         </p>

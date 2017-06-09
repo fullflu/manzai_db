@@ -1,0 +1,24 @@
+    <h3>
+      編集する
+    </h3>
+<div class="contents row">
+ <% if @prev_comment %>
+   <%= "#{@prev_comment.daihon}（直前の発言）" %>
+ <% else %>
+   <%= "これより前の発言はありません" %>
+ <% end %>
+  <br>
+  <br>
+   <%= form_for(@comment) do |f|%>
+      <div class="daihon_input">
+      <%= f.text_area :daihon %>
+      </div>
+     <%= f.submit %>
+  <% end %>
+  <br>
+ <% if @post_comment %>
+   <%= "#{@post_comment.daihon}（直後の発言）" %>
+ <% else %>
+   <%= "（これより後の発言はありません）" %>
+ <% end %>
+</div>
