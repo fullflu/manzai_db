@@ -5,6 +5,25 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def top
+    @groups = []
+    @group = Group.new
+    @product = Product.new
+  end
+
+  def search_top
+    group_keyword = params[:group_keyword]
+    title_keyword = params[:title_keyword]
+    # binding.pry
+    if params[:group_keyword].present?
+      @groups = Group.where('name LIKE(?)', "%#{group_keyword}%").limit(20)
+    else
+      @groups = []
+    end
+    if params[:title_keyword].present?
+      @products = Product.where('name LIKE(?)', "%#{title_keyword}%").limit(20)
+    else
+      @products = []
+    end
   end
 
   def index
@@ -35,6 +54,7 @@ class GroupsController < ApplicationController
   end
 
   def search_group
+    # binding.pry
     keyword = "%#{params[:keyword]}%"
     if params[:keyword].present?
       @groups = Group.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
