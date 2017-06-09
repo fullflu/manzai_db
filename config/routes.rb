@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     end
   end
   get 'products' => 'products#index_all'
+  get 'products/:id/comments/:id/add' => 'comments#add'
 
   # resources :groups
   # resources :products do

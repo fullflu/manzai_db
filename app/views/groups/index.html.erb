@@ -19,8 +19,10 @@
         <!-- <td><%= group.boke %></td> -->
         <!-- <td><%= group.tsukkomi %></td> -->
         <td><%= link_to "#{group.name}", group_products_path(group.id) %></td>
+        <% if user_signed_in? %>
         <td><%= link_to 'Edit', edit_group_path(group) %></td>
         <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +30,6 @@
 
 <br>
 
+<% if user_signed_in? %>
 <%= link_to 'New Group', new_group_path %>
+<% end %>

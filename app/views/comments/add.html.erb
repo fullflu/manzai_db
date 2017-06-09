@@ -1,0 +1,25 @@
+    <h3>
+    <%="#{@tsukkomi}の発言を挿入してください" %>
+    </h3>
+<div class="contents row">
+ <% if @prev_comment %>
+   <%= "#{@prev_comment.daihon}（直前の発言）" %>
+ <% else %>
+   <%= "これより前の発言はありません" %>
+ <% end %>
+  <br>
+  <br>
+   <%= form_for [@product, @comment] do |f|%>
+      <div class="daihon_input">
+      <%= f.text_area :daihon %>
+      <%= f.hidden_field :tsukkomi, :value => @tsukkomi_flg %>
+      <%= f.hidden_field :prev_id, :value => @prev_comment_id %>
+      <%= f.hidden_field :post_id, :value => @post_comment.id %>
+      </div>
+     <%= f.submit "挿入する"%>
+  <% end %>
+  <br>
+  <%= "#{@post_comment.daihon}（挿入対象の発言）" %>
+</div>
+<br>
+<%= link_to '台本に戻る', product_path(@product.id) %>

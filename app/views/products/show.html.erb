@@ -29,6 +29,7 @@
             <%= "「#{comment.daihon}」" %>
           <% end %>
           <% if user_signed_in? && current_user.id == @product.user_id %>
+            <%= link_to '直前に挿入', "/products/#{@product.id}/comments/#{comment.id}/add", method: :get %>
             <%= link_to '編集', "/comments/#{comment.id}/edit", method: :get %>
             <%= link_to '削除', "/comments/#{comment.id}", method: :delete %>
           <% end %>
@@ -45,18 +46,18 @@
       <%= form_for [@product, @comment] do |f|%>
         <% if @last_id %>
          次は<%= @tsukkomi_next %>を入力してください
+          <%= f.hidden_field :tsukkomi, :value => @tsukkomi_next_flg %>
         <% else %>
-        つっこみ、ぼけのどちらから漫才が始まるか選んでください
-      <div class="tsukkomi_button">
-      <%= f.radio_button :tsukkomi, true%>
-      <%= f.label :tsukkomi, "つっこみ", :value => true%>
-      <%= f.radio_button :tsukkomi, false%>
-      <%= f.label :tsukkomi, "ぼけ", :value => false%>
-      </div>
-      <div>
-      <% end %>
+            つっこみ、ぼけのどちらから漫才が始まるか選んでください
+          <div class="tsukkomi_button">
+          <%= f.radio_button :tsukkomi, true%>
+          <%= f.label :tsukkomi, "つっこみ", :value => true%>
+          <%= f.radio_button :tsukkomi, false%>
+          <%= f.label :tsukkomi, "ぼけ", :value => false%>
+          </div>
+          <div>
+          <% end %>
       <div class="daihon_input">
-      <%= f.hidden_field :tsukkomi, :value => @tsukkomi_next_flg %>
       <%= f.hidden_field :prev_id, :value => @last_id %>
       <%= f.text_area :daihon, :placeholder => "台本を入力してください" %>
       </div>
