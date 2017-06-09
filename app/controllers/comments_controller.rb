@@ -21,7 +21,28 @@ class CommentsController < ApplicationController
     def destroy
         comment = Comment.find(params[:id])
         if comment.product.user_id == current_user.id
+            if comment.prev_id
+                prev_comment = Comment.find(comment.prev_id)
+            else
+                prev_comment = nil
+            end
+            if comment.post_id
+                post_comment = Comment.find(comment.post_id)
+            else
+                post_comment = nil
+            end
+            if post_comment
+                post_comment.prev_id = comment.prev_id
+                post_comment.save
+            end
+            if prev_comment
+                prev_comment.post_id = comment.post_id
+                prev_comment.save
+            end
+            product_id = comment.product_id
             comment.destroy
+            #binding.pry
+            redirect_to controller: :products, action: :show, id: product_id
         end
     end
 
