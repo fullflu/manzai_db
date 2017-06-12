@@ -14,20 +14,25 @@ class GroupsController < ApplicationController
     group_keyword = params[:group_keyword]
     title_keyword = params[:title_keyword]
     # binding.pry
-    if params[:group_keyword].present?
-      @groups = Group.where('name LIKE(?)', "%#{group_keyword}%").limit(20)
-    else
-      @groups = []
-    end
     if params[:title_keyword].present?
-      @products = Product.where('name LIKE(?)', "%#{title_keyword}%").limit(20)
+      #args = ["select * from Products p join Groups g on g.id = p.group_id where p.title LIKE ? and g.name LIKE ?","%#{title_keyword}%","%#{group_keyword}%"]
+      #sql = ActiveRecord::Base.send(:sanitize_sql_array, args)
+      #@groups = []
+      redirect_to :controller => 'products', :action => "index_all", :group_keyword => group_keyword, :title_keyword => title_keyword
+      #@products =  ActiveRecord::Base.connection.select_all(sql)
+      #@products = Product.where('title LIKE(?)', "%#{title_keyword}%")
     else
       @products = []
+     #@groups = Group.where('name LIKE(?)', "%#{group_keyword}%")
+      redirect_to :controller => 'groups', :action => "index", :group_keyword => group_keyword
     end
   end
 
   def index
-    @groups = Group.all
+    # binding.pry
+    @group_keyword = params[:group_keyword]
+    @groups = Group.where('name LIKE(?)', "%#{params[:group_keyword]}%")
+    # @groups = Group.all
   end
 
   # GET /groups/1

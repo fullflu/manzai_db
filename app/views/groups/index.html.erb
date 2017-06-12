@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<% if @group_keyword %>
+<h1> グループ検索結果 </h1>
+<% else %>
 <h1>グループ一覧</h1>
+<% end %>
 
 <table>
   <thead>
@@ -27,6 +31,10 @@
     <% end %>
   </tbody>
 </table>
+
+<br>
+
+<%= render partial: "form_search_top" %>
 
 <br>
 
