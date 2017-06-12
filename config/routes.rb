@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   end
   get 'products' => 'products#index_all'
   get 'products/:id/comments/:id/add' => 'comments#add'
+  # post 'products/:id/likes' => 'likes#create'
+  # delete 'products/:id/likes' => 'likes#destroy'
+  post 'products/:id/comments/:id/likes' => 'likes#create'
+  delete 'products/:id/comments/:id/likes' => 'likes#destroy'
 
   # resources :groups
   # resources :products do
