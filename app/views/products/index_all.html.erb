@@ -16,7 +16,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.user.nickname %></td>
-        <td><%= link_to product.group.name, group_products_path(product.group.id) %></td>
+        <td><%= link_to product.group.name, group_products_path(:group_id => product.group.id) %></td>
         <td><%= product.title %></td>
         <td><%= link_to '詳細', product %></td>
           <% if user_signed_in? && current_user.id == product.user_id %>
