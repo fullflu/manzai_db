@@ -11,10 +11,11 @@ class ProductsController < ApplicationController
   end
 
   def index_all
-    args = ["select * from Products p join Groups g on g.id = p.group_id where p.title LIKE ? and g.name LIKE ?","%#{params[:title_keyword]}%","%#{params[:group_keyword]}%"]
-    sql = ActiveRecord::Base.send(:sanitize_sql_array, args)
-    binding.pry
-    @products = Product.all.includes([:group, :user])
+    @group_keyword = params[:group_keyword]
+    @title_keyword = params[:title_keyword]
+    # binding.pry
+    @products = Product.includes([:group,:user]).joins(:group).where('products.title LIKE(?) && groups.name LIKE(?)', "%#{params[:title_keyword]}%","%#{params[:group_keyword]}%")
+    # @products = Product.all.includes([:group, :user])
   end
 
   # GET /products/1
