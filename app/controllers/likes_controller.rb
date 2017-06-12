@@ -4,6 +4,9 @@ class LikesController < ApplicationController
         @like = Like.create(user_id: current_user.id, comment_id: params[:id])
         @likes = Like.where(comment_id: params[:id])
         @comment = Comment.find(params[:id])
+        # respond_to do |format|
+        #     format.js
+        # end
         # binding.pry
         # @comments = Product.where(comment_id: params[:])
     end
@@ -14,5 +17,8 @@ class LikesController < ApplicationController
         like.destroy
         @likes = Like.where(comment_id: params[:id])
         @comment = Comment.find(params[:id])
+        # respond_to do |format|
+        #     format.js
+        # end
     end
 end

@@ -34,7 +34,7 @@
             <%= link_to '削除', "/comments/#{comment.id}", method: :delete %>
           <% end %>
           <% if user_signed_in? %>
-          <%= render partial: "likes/like", locals: { comment: comment}, remote: true%>
+          <%= render partial: "likes/like", locals: { comment: comment}%>
           <% end %>
 
 
