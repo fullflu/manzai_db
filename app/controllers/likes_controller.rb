@@ -4,6 +4,7 @@ class LikesController < ApplicationController
         @like = Like.create(user_id: current_user.id, comment_id: params[:id])
         @likes = Like.where(comment_id: params[:id])
         @comment = Comment.find(params[:id])
+        # binding.pry
         # @comments = Product.where(comment_id: params[:])
     end
 
