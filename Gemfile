@@ -49,4 +49,5 @@ gem 'devise'
 
 gem 'pry-rails'
 
+gem 'bullet', :group => :development
 

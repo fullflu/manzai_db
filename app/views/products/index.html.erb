@@ -43,6 +43,8 @@
   </tbody>
 </table>
 
+<%= render partial: "products/form_search_title", locals: { group_keyword: @group_keyword, title_keyword: @title_keyword} %>
+
 <br>
 
 <%= link_to "新しく#{@group.name}のタイトルを作る", create_title_group_products_path %>

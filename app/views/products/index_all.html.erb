@@ -16,7 +16,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.user.nickname %></td>
-        <td><%= link_to product.group.name, group_products_path(product.group.id) %></td>
+        <td><%= link_to product.group.name, group_products_path(:group_id => product.group.id) %></td>
         <td><%= product.title %></td>
         <td><%= link_to '詳細', product %></td>
           <% if user_signed_in? && current_user.id == product.user_id %>
@@ -27,6 +27,8 @@
     <% end %>
   </tbody>
 </table>
+
+<%= render partial: "groups/form_search_top", locals: { group_keyword: @group_keyword, title_keyword: @title_keyword} %>
 
 <br>
 

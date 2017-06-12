@@ -5,13 +5,19 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    #binding.pry
+    # binding.pry
+    @title_keyword = params[:title_keyword]
     @group = Group.find_by(id: params[:group_id])
-    @products = Product.where(group_id: params[:group_id]).includes([:group, :user])
+    #@products = Product.where(group_id: params[:group_id]).includes([:group, :user])
+    @products = Product.includes([:group,:user]).where('products.group_id = ? && products.title LIKE(?)', "#{params[:group_id]}", "%#{params[:title_keyword]}%")
   end
 
   def index_all
-    @products = Product.all.includes([:group, :user])
+    @group_keyword = params[:group_keyword]
+    @title_keyword = params[:title_keyword]
+    # binding.pry
+    @products = Product.includes([:group,:user]).joins(:group).where('products.title LIKE(?) && groups.name LIKE(?)', "%#{params[:title_keyword]}%","%#{params[:group_keyword]}%")
+    # @products = Product.all.includes([:group, :user])
   end
 
   # GET /products/1
