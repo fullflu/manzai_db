@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show, :index_all]
+  before_action :move_to_index, except: [:index, :show, :index_all, :dl_test]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -18,6 +18,12 @@ class ProductsController < ApplicationController
     # binding.pry
     @products = Product.includes([:group,:user]).joins(:group).where('products.title LIKE(?) && groups.name LIKE(?)', "%#{params[:title_keyword]}%","%#{params[:group_keyword]}%")
     # @products = Product.all.includes([:group, :user])
+    #binding.pry
+  end
+
+  def dl_test
+    binding.pry
+    redirect_to :controller => 'products', :action => 'index_all'
   end
 
   # GET /products/1
