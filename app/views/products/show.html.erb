@@ -15,6 +15,13 @@
   <%= @product.title %>
 </p>
 
+  <%= form_tag("/products/dl_test", method: :post) do %>
+  <%= hidden_field_tag :id, @product.id %>
+  <%= submit_tag("ダウンロードする") %>
+  <% end %>
+
+<br>
+
     <ul style="padding: 0">
     <% if @last_id %>
     <% @comments_view.each do |comment| %>

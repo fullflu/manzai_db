@@ -22,8 +22,18 @@ class ProductsController < ApplicationController
   end
 
   def dl_test
-    binding.pry
-    redirect_to :controller => 'products', :action => 'index_all'
+    # binding.pry
+    if params[:group_id]
+      to_tsv
+      redirect_to :controller => 'products', :action => 'index', :group_id => params[:group_id]
+    elsif params[:id]
+      product = Product.find(params[:id])
+      product_to_tsv(product)
+      redirect_to :controller => 'products', :action => 'show', :id => params[:id]
+    else
+      to_tsv
+      redirect_to :controller => 'products', :action => 'index_all'
+    end
   end
 
   # GET /products/1
@@ -173,4 +183,45 @@ class ProductsController < ApplicationController
         end
     end
 
+    def to_tsv
+      # binding.pry
+      products = Product.where('id in (?)',params[:check_id_])
+      if products
+        products.each do |product|
+          product_to_tsv(product)
+        end
+      end
+    end
+
+    def product_to_tsv(product)
+        path = "../downloads/group_#{product.group_id}/"
+        FileUtils.mkdir_p(path) unless FileTest.exist?(path)
+        CSV.open(path+"product_#{product.id}.tsv", "w", :col_sep => "\t") do |io|
+          comments = comments_sort(product)
+          if comments
+            comments.each do |x|
+             io << [x[:daihon]]
+            end
+          end
+        end
+    end
+
+    def comments_sort(product)
+      comments = product.comments
+      if comments.length == 0
+        return nil
+      end
+      comment_id = comments.select("id")
+      comment_id = comment_id.map{|item| item.id}
+      ary=[comment_id,comments].transpose
+      comments_hash = ary.to_h
+      comment_view = comments.find_by(prev_id: nil)
+      comments_view = []
+      comments_view << comment_view
+      for i in 1..comment_id.length-1
+        comment_view = comments_hash[comment_view.post_id]
+        comments_view << comment_view
+      end
+      return comments_view
+    end
 end

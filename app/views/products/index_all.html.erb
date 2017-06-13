@@ -11,10 +11,12 @@
       <th colspan="3"></th>
     </tr>
   </thead>
+
   <%= form_tag("/products/dl_test", method: :post) do %>
   <%= check_box_tag 'check_all', true, false, :id => "check_all" , :name => "check_all"%>
   <label for="check_all">すべてを選択  </label>
-  <%= submit_tag("ダウンロード") %>
+  <%= submit_tag("ダウンロードする") %>
+
   <tbody>
      <div id="checks">
     <% @products.each do |product| %>

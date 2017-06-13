@@ -10,7 +10,7 @@ $(function() {
     }else{
       $('#check_all').prop('checked', false);
     }
-    
+
   });
 });
 
