@@ -3,14 +3,21 @@ $(function() {
     $('.check').prop('checked', this.checked);
   });
   $('.check').on('click', function() {
-      // console.log($('#checks[] :input').length)
-      // console.log($('#checks :input').length)
-      // console.log($('#checks :checked').length)
+    // console.log(cs())
 
-    // if ($('#checks :checked').length == $('#checks :input').length){
-    //   $('#check_all').prop('checked', 'checked');
-    // }else{
-    //   $('#check_all').prop('checked', false);
-    // }
+    if ($('.check').length == checked_sum()){
+      $('#check_all').prop('checked', 'checked');
+    }else{
+      $('#check_all').prop('checked', false);
+    }
+    
   });
 });
+
+function checked_sum(){
+  var sum = 0
+  for(var i = 0; i < $('.check').length; i++) {
+    sum += $('.check')[i].checked;
+  }
+  return sum
+}
