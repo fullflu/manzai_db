@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
   end
 
   def index_all
+    # binding.pry
     @group_keyword = params[:group_keyword]
     @title_keyword = params[:title_keyword]
     # binding.pry
@@ -197,10 +198,11 @@ class ProductsController < ApplicationController
         path = "../downloads/group_#{product.group_id}/"
         FileUtils.mkdir_p(path) unless FileTest.exist?(path)
         CSV.open(path+"product_#{product.id}.tsv", "w", :col_sep => "\t") do |io|
+          io << ["daihon","tsukkomi"]
           comments = comments_sort(product)
           if comments
             comments.each do |x|
-             io << [x[:daihon]]
+             io << [x[:daihon],x[:tsukkomi]]
             end
           end
         end
@@ -223,5 +225,12 @@ class ProductsController < ApplicationController
         comments_view << comment_view
       end
       return comments_view
+    end
+
+    def get_hash_session_time
+      session_id = request.session_options[:id]
+      time = Time.now.iso8601
+      hash_session_time = Digest::MD5.digest(time + session_id)
+      return hash_session_time
     end
 end
