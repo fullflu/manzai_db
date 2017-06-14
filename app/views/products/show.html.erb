@@ -40,7 +40,9 @@
             <%= link_to '編集', "/comments/#{comment.id}/edit", method: :get %>
             <%= link_to '削除', "/comments/#{comment.id}", method: :delete %>
           <% end %>
+          <div id="like-buttons">
           <%= render partial: "likes/like", locals: { comment: comment}%>
+          </div>
 
 
         </p>

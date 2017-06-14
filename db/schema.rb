@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612052154) do
+ActiveRecord::Schema.define(version: 20170614031822) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "product_id", limit: 4
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20170612052154) do
     t.boolean  "tsukkomi"
     t.integer  "prev_id",    limit: 4
     t.integer  "post_id",    limit: 4
-    t.integer  "good",       limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "good",       limit: 4,     default: 0
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "groups", force: :cascade do |t|
