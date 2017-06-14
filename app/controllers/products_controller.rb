@@ -227,10 +227,4 @@ class ProductsController < ApplicationController
       return comments_view
     end
 
-    def get_hash_session_time
-      session_id = request.session_options[:id]
-      time = Time.now.iso8601
-      hash_session_time = Digest::MD5.digest(time + session_id)
-      return hash_session_time
-    end
 end
