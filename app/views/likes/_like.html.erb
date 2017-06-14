@@ -1,15 +1,25 @@
-<% if comment.like_user(current_user.id) %>
-  <%= button_to "/products/#{comment.product_id}/comments/#{comment.id}/likes", method: :delete, id: "like-button", remote: true do %>
-    <%= image_tag("icon_red_heart.png") %>
-    <span>
-      <%= comment.good %>
-    </span>
+<% if user_signed_in? %>
+  <% if comment.like_user(current_user.id) %>
+    <%= button_to "/products/#{comment.product_id}/comments/#{comment.id}/likes", method: :delete, id: "like-button", remote: true do %>
+      <%= image_tag("icon_red_heart.png") %>
+      <span>
+        <%= comment.good %>
+        <%= "いいね" %>
+      </span>
+    <% end %>
+  <% else %>
+    <%= button_to "/products/#{comment.product_id}/comments/#{comment.id}/likes", remote: true, method: :post, id: "like-button" do %>
+      <%= image_tag("icon_heart.png") %>
+      <span>
+        <%= comment.good %>
+        <%= "いいね" %>
+      </span>
+    <% end %>
   <% end %>
 <% else %>
-  <%= button_to "/products/#{comment.product_id}/comments/#{comment.id}/likes", remote: true, method: :post, id: "like-button" do %>
-    <%= image_tag("icon_heart.png") %>
-    <span>
-      <%= comment.good %>
-    </span>
-  <% end %>
+      <%= image_tag("icon_heart.png") %>
+      <span>
+        <%= comment.good %>
+        <%= "いいね" %>
+      </span>
 <% end %>
