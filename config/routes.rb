@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   post 'products/:id/comments/:id/likes' => 'likes#create'
   delete 'products/:id/comments/:id/likes' => 'likes#destroy'
 
+  post 'products/download_db' => 'products#download_db'
+
   # resources :groups
   # resources :products do
   #   collection do
