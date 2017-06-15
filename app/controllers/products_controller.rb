@@ -233,31 +233,50 @@ class ProductsController < ApplicationController
         file_path = Tempfile.new("tempdb-#{Time.now}")
         if params[:check_id_]
           products = Product.where('id in (?)',params[:check_id_])
-        else products = Product.where(id: params[:id])
+        else
+          products = Product.where(id: params[:id])
         end
+        # binding.pry
         if products
-          Zip::OutputStream.open(file_path.path) do |zip|
-            # binding.pry
-            zip.put_next_entry('downloads.md')
-            zip.write open("download_structure.md").read
-            products.each do |product|
-              if made_group_list.include?(product.group_id)
-                zip.mkdir("group_#{product.group_id}")
-                made_group_list << product.group_id
-              end
-              comments = comments_sort(product)
-              if comments
-                zip.put_next_entry "group_#{product.group_id}/product_#{product.id}.tsv"
-                tsv_data = CSV.generate(:col_sep => "\t") do |tsv|
-                  tsv << ["comment", "tsukkomi_flg", "like"]
-                  comments.each do |comment|
-                    tsv << [comment[:daihon],comment[:tsukkomi],comment[:good]]
+            Zip::OutputStream.open(file_path.path) do |zip|
+              tsv_product_data = CSV.generate(:col_sep => "\t") do |tsv_product|
+                tsv_product << ["id","name"]
+                # binding.pry
+                zip.put_next_entry('downloads.md')
+                zip.write open("download_structure.md").read
+                products.each do |product|
+                  unless made_group_list.include?(product.group_id)
+                    # zip.mkdir("group_#{product.group_id}")
+                    made_group_list << product.group_id
+                    # binding.pry
                   end
+                  comments = comments_sort(product)
+                  tsv_product << [product.id, product.title]
+                  zip.put_next_entry "group_#{product.group_id}/product_#{product.id}.tsv"
+                  tsv_data = CSV.generate(:col_sep => "\t") do |tsv|
+                    tsv << ["comment", "tsukkomi_flg", "like"]
+                    if comments
+                      comments.each do |comment|
+                        tsv << [comment[:daihon],comment[:tsukkomi],comment[:good]]
+                      end
+                    end
+                  end
+                  zip.print tsv_data
+                  # end
                 end
-                zip.print tsv_data
               end
+              zip.put_next_entry "groups.tsv"
+              tsv_data = CSV.generate(:col_sep => "\t") do |tsv|
+                tsv << ["group_id", "name"]
+                groups = Group.where('id in (?)',made_group_list)
+                groups.each do |group|
+                  tsv << [group[:id],group[:name]]
+                end
+              end
+              zip.print tsv_data
+              zip.put_next_entry "products.tsv"
+              zip.print tsv_product_data
             end
-          end
           send_file(file_path.path, type: 'application/zip', dispositon: 'attachment', filename: "DB_#{Time.now.strftime("%Y%m%d")}.zip")
           file_path.close
         end
