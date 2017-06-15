@@ -23,13 +23,13 @@ class ProductsController < ApplicationController
   end
 
   def dl_test
-    # binding.pry
     if params[:group_id]
       to_zip
       # binding.pry
       # redirect_to :controller => 'products', :action => 'index', :group_id => params[:group_id]
     elsif params[:id]
-      product = Product.find(params[:id])
+      to_zip
+      # product = Product.find(params[:id])
       # produt_to_tsv(product)
       # redirect_to :controller => 'products', :action => 'show', :id => params[:id]
     else
@@ -108,7 +108,6 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     # binding.pry
-
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -228,60 +227,34 @@ class ProductsController < ApplicationController
       return comments_view
     end
 
-      # # t = Tempfile.new("tempdb-#{Time.now}")
-      # # Zip::File.open(t.path, Zip::File::CREATE) do |zip|
-      # file_path = "sample.zip"
-      # # Zip::OutputStream.open(path) do |zip|
-      # made_group_list = []
-      # Zip::File.open(file_path, Zip::File::CREATE) do |zip|
-      #   products.each do |product|
-      #     if made_group_list.include?(product.group_id)
-      #       zip.mkdir("group_#{product.group_id}")
-      #       zip.chdir("group_#{product.group_id}")
-      #       made_group_list << product.group_id
-      #     else
-      #       zip.chdir("group_#{product.group_id}")
-      #     end
-      #     comments = comments_sort(product)
-      #     if comments
-      #       comments.each do |comment|
-      #           #zip.get_output_stream( "group_#{product.group_id}/product_#{product.id}"){ |s| s.print("#{comment.daihon} \t #{comment.tsukkomi}")}
-      #           zip.file.open("#produt_{product.id}",'w') {|os| os.write "#{product.id}"}
-      #       end
-      #     end
-      #   end
-      # end
 
       def to_zip
         made_group_list = []
         file_path = Tempfile.new("tempdb-#{Time.now}")
-        products = Product.where('id in (?)',params[:check_id_])
+        if params[:check_id_]
+          products = Product.where('id in (?)',params[:check_id_])
+        else products = Product.where(id: params[:id])
+        end
         if products
           Zip::OutputStream.open(file_path.path) do |zip|
-          # Zip::File.open(file_path.path, Zip::File::CREATE) do |zip|
+            # binding.pry
+            zip.put_next_entry('downloads.md')
+            zip.write open("download_structure.md").read
             products.each do |product|
               if made_group_list.include?(product.group_id)
                 zip.mkdir("group_#{product.group_id}")
-                # zip.chdir("group_#{product.group_id}")
                 made_group_list << product.group_id
-              # else
-                # zip.chdir("group_#{product.group_id}")
               end
               comments = comments_sort(product)
               if comments
                 zip.put_next_entry "group_#{product.group_id}/product_#{product.id}.tsv"
                 tsv_data = CSV.generate(:col_sep => "\t") do |tsv|
+                  tsv << ["comment", "tsukkomi_flg", "like"]
                   comments.each do |comment|
                     tsv << [comment[:daihon],comment[:tsukkomi],comment[:good]]
-                      #zip.get_output_stream( "group_#{product.group_id}/product_#{product.id}.tsv"){ |s| s.print("#{comment.daihon} \t #{comment.tsukkomi}")}
-                      # zip.file.open("#produt_{product.id}",'w') {|os| os.write "#{product.id}"}
                   end
-                #end
-                # zip.print tsv
                 end
                 zip.print tsv_data
-                #tsv_data = ["daihon", "tsukkomi", "likes"] + tsv
-                # zip.get_output_stream( "group_#{product.group_id}/product_#{product.id}.tsv"){ |s| s.print(tsv)}
               end
             end
           end
