@@ -1,0 +1,4 @@
+// $("#like-button_#{@comment.id}").html("<%= j(render partial: 'like', locals: { comment: @comment, likes: @likes, like: @like}) %>");
+// $(".js-like-buttons").html("<%= j(render partial: 'like', locals: { comment: @comment, likes: @likes, like: @like}) %>");
+// console.log('<%="#{@comment.id}" %>')
+$('#like-button_<%="#{@comment.id}"%>').html("<%= j(render partial: 'like', locals: { comment: @comment, likes: @likes, like: @like}) %>");

@@ -6,10 +6,15 @@
       </a>
     </div>
   </header>
-  <div class="pt1em pb1em" id="contents">  <div id="main_cnt_wrapper">
     <div id="yjContentsBody">
-      <div class="yjContainer">
-      information
+          <%= "#{current_user.nickname}さんの投稿タイトル一覧" %>
+      <div class="products">
+        <% @products.each do |product| %>
+        <p>
+          <%= link_to "#{product.title}", product_path(product.id) %>
+          (<%= link_to "#{product.group.name}", group_path(product.group.id) %>)
+        </p>
+        <% end %>
       </div>
     </div>
   </div>

@@ -1,0 +1,4 @@
+// console.log("help");
+// console.log("#{@comment}");
+// $("#like-button").html("<%= j(render partial: 'like', locals: { comment: @comment, likes: @likes }) %>");
+$('#like-button_<%="#{@comment.id}"%>').html("<%= j(render partial: 'like', locals: { comment: @comment, likes: @likes}) %>");

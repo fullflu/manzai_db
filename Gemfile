@@ -51,3 +51,5 @@ gem 'pry-rails'
 
 gem 'bullet', :group => :development
 
+# gem 'rubyzip'
+gem 'rubyzip', '>= 1.0.0'

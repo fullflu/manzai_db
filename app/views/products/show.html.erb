@@ -15,6 +15,13 @@
   <%= @product.title %>
 </p>
 
+  <%= form_tag("/products/dl_test", method: :post) do %>
+  <%= hidden_field_tag :id, @product.id %>
+  <%= submit_tag("ダウンロードする") %>
+  <% end %>
+
+<br>
+
     <ul style="padding: 0">
     <% if @last_id %>
     <% @comments_view.each do |comment| %>
@@ -33,6 +40,11 @@
             <%= link_to '編集', "/comments/#{comment.id}/edit", method: :get %>
             <%= link_to '削除', "/comments/#{comment.id}", method: :delete %>
           <% end %>
+          <div id="like-buttons">
+          <%= render partial: "likes/like", locals: { comment: comment}%>
+          </div>
+
+
         </p>
       </div>
     </li>

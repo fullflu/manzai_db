@@ -27,6 +27,12 @@
     </tr>
   </thead>
 
+  <%= form_tag("/products/dl_test", method: :post) do %>
+  <%= check_box_tag 'check_all', true, false, :id => "check_all" , :name => "check_all"%>
+  <label for="check_all">すべてを選択  </label>
+  <%= hidden_field_tag :group_id, @group.id %>
+  <%= submit_tag("ダウンロードする") %>
+
   <tbody>
     <% @products.each do |product| %>
       <tr>
@@ -38,9 +44,11 @@
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
+       <td><%= check_box_tag 'check_id_[]',product.id, false, :id => "check_id_#{product.id}", :class => "check"%></td>
       </tr>
     <% end %>
   </tbody>
+  <% end %>
 </table>
 
 <%= render partial: "products/form_search_title", locals: { group_keyword: @group_keyword, title_keyword: @title_keyword} %>
