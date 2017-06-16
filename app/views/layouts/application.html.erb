@@ -10,7 +10,7 @@
     <header class="header">
           <div class="always_view clearfix">
           <% if user_signed_in? %>
-          <span > <%= current_user.nickname %>さん
+          <span >
           <ul class="user__info">
            <a href="/users/<%= current_user.id %>">マイページ</a>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

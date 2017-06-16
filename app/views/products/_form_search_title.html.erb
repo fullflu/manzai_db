@@ -1,4 +1,4 @@
-
+<div class = search>
             <div class="search_title">
               <header class="header header--search_title">
                 <h2 class="text-middle">
@@ -10,8 +10,9 @@
                 <%= label_tag :title_keyword, 'タイトル:' %>
                 <%= text_field_tag :title_keyword, @title_keyword %>
                 </p>
-                  <%= submit_tag "検索" %>
+                  <%= submit_tag "検索",class: 'button' %>
               <% end %>
 
 
             </div>
+</div>

@@ -13,31 +13,57 @@ h1,h2,h3,h4,h5,h6,p {
 
 header {
   background-color: gray;
-  height: 150px;
+  height: 50px;
 }
+
+
+.footer_home{
+  font-size: 10px;
+}
+
+
+
+
+
+
+.search {
+  height: 142px;
+  margin: 5px auto;
+}
+
 
 .header--search_top {
   background-color: yellow;
-  margin: 0;
+  margin: auto auto;
   padding: 0;
-  height: 80px;
+  height: 30px;
 }
 
 .search_top{
   background-color: blue;
-  width: 300px;
+  width: 250px;
+  padding: 0;
+
+}
+
+.text-middle{
+  text-align: center;
+  margin: auto auto;
+  padding: 0;
+
 }
 
 .header--search_title {
   background-color: yellow;
-  margin: 0;
+  margin: auto auto;
   padding: 0;
-  height: 80px;
+  height: 30px;
 }
 
 .search_title{
   background-color: blue;
-  width: 300px;
+  width: 250px;
+  padding: 0;
 }
 
 .button {
