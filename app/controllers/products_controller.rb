@@ -90,6 +90,8 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    # binding.pry
+    # @product = Product.find(params[:id])
     if current_user.id != @product.user_id
       redirect_to :controller => 'products', :action => 'show', id: params[:id]
     end
@@ -106,6 +108,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
+    @group =Group.find(params[:group_id])
     @product = Product.new(product_params)
     # binding.pry
     respond_to do |format|
@@ -113,7 +116,7 @@ class ProductsController < ApplicationController
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
-        format.html { render :new }
+        format.html { render :create_title }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
@@ -123,7 +126,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1.json
   def update
     if @product.user_id == current_user.id
-      #binding.pry
+      # binding.pry
       new_group_name = params.require(:group)[:name]
       new_group = Group.find_by(name: new_group_name)
       if new_group
@@ -133,6 +136,9 @@ class ProductsController < ApplicationController
             format.html { redirect_to @product, notice: 'Product was successfully updated.' }
             format.json { render :show, status: :ok, location: @product }
           else
+            # binding.pry
+            @group = Group.find(@product.group_id)
+            # render action: :edit
             format.html { render :edit }
             format.json { render json: @product.errors, status: :unprocessable_entity }
           end

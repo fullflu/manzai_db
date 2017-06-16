@@ -44,8 +44,8 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
-    #binding.pry
     @group = Group.new
+    # binding.pry
     if params[:name]
       @group.name = params[:name]
       @product_id = params[:product_id]
@@ -75,16 +75,42 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.save
-    # binding.pry
+    binding.pry
     product = params.require(:group)[:product]
     if product
-      #binding.pry
-      product_updating = Product.find(product[:product_id])
-      product_updating.update_attributes(group_id: @group.id, title: product[:title])
-      redirect_to :controller => 'products', :action => "show", :id => product[:product_id]
+      @product = Product.find(product[:product_id])
+      @product_id = product[:product_id]
+      @title = product[:title]
+      if @group.errors.messages.length > 0
+        # binding.pry
+        # render :action => "new", locals: {:product_id => product[:product_id], :title => product[:title]}
+        # render :controller => 'products', :action => "edit", :id => product[:product_id]
+        # redirect_to :controller => 'products', :action => "edit", :id => product[:product_id]
+
+        # @product = Product.find(product[:product_id])
+        # @edit_error_message = @group.errors.messages
+        render 'new'
+        # render template: "products/edit", :id => product[:product_id]
+      else
+        # binding.pry
+        product_updating = Product.find(product[:product_id])
+        product_updating.update_attributes(group_id: @group.id, title: product[:title])
+        redirect_to :controller => 'products', :action => "show", :id => product[:product_id]
+      end
     else
-      tmp_group_id = Group.find_by(name: params[:group][:name]).id
-      redirect_to :controller => 'products', :action => "create_title", group_id: tmp_group_id
+      # binding.pry
+      unless @group.errors.messages.length > 0
+        tmp_group = Group.find_by(name: params[:group][:name])
+        # binding.pry
+        if tmp_group
+          tmp_group_id = tmp_group.id
+          redirect_to :controller => 'products', :action => "create_title", group_id: tmp_group_id
+        else
+          render 'new'
+        end
+      else
+        render 'new'
+      end
     end
 
 
