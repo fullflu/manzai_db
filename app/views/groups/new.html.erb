@@ -1,7 +1,7 @@
 <h1>新しくグループを作ってください</h1>
 
 <% if @product_id %>
-<h2> 
+<h2>
  <%= "#{@group.name} はまだ登録されていません。ぼけとつっこみの名前を登録してください！" %>
 </h2>
 <% end %>
@@ -36,6 +36,11 @@
     <%= f.label :tsukkomi %><br>
     <%= f.text_field :tsukkomi %>
   </div>
+
+  <% if @edit_error_message %>
+    <%= f.hidden_field :title, :value => @title %>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

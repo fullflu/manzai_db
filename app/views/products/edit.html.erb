@@ -12,9 +12,14 @@
   <% end %>
 
   <h2>
-  <%= "#{@product.group.name}の#{@product.title}" %>
+  <% if @edit_error_message %>
+    "error"
+  <% end %>
   </h2>
 
+  <h2>
+  <%= "#{@product.group.name}の#{@product.title}" %>
+  </h2>
   <%= fields_for @group, new_group_path do |c| %>
     <%= c.label :name, value: "グループ名を変更" %><br>
     <%= c.text_field :name %>
