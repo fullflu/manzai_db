@@ -31,7 +31,7 @@ class GroupsController < ApplicationController
   def index
     # binding.pry
     @group_keyword = params[:group_keyword]
-    @groups = Group.where('name LIKE(?)', "%#{params[:group_keyword]}%")
+    @groups = Group.where('name LIKE(?)', "%#{params[:group_keyword]}%").page(params[:page]).per(2)
     # @groups = Group.all
   end
 
