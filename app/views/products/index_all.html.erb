@@ -13,9 +13,14 @@
   </thead>
 
   <%= form_tag("/products/dl_test", method: :post) do %>
+  <%= check_box_tag 'check_all_products', true, false, :id => "check_all_products" , :name => "check_all_products"%>
+  <label for="check_all_products"> <%="台本をすべてダウンロード"%></label>
+  <br>
+
   <%= check_box_tag 'check_all', true, false, :id => "check_all" , :name => "check_all"%>
-  <label for="check_all">すべてを選択  </label>
-  <%= submit_tag("ダウンロードする") %>
+  <label for="check_all">このページをすべて選択  </label>
+  <br>
+  <%= submit_tag("ダウンロード実行") %>
 
   <tbody>
      <div id="checks">
@@ -35,6 +40,8 @@
   </div>
   </tbody>  <% end %>
 </table>
+
+<%= paginate(@products) %>
 
 
 <%= render partial: "groups/form_search_top", locals: { group_keyword: @group_keyword, title_keyword: @title_keyword} %>
