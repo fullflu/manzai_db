@@ -8,19 +8,15 @@
 </head>
 <body>
     <header class="header">
-          <div class="user_nav grid-6">
-          <!-- <span class="entry_button" style="float: left"> <%= current_user.nickname %>さん -->
+          <div class="always_view clearfix">
           <% if user_signed_in? %>
           <span > <%= current_user.nickname %>さん
           <ul class="user__info">
-          <!-- <li class="entry_button" style="float: left"> -->
-          <li style="list-style:none;>
            <a href="/users/<%= current_user.id %>">マイページ</a>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-          </li>
+          <a class="post" href="/groups/search_group">投稿する</a>
           </ul>
           </span>
-          <a class="post" href="/groups/search_group">投稿する</a>
         </div>
         <% else %>
           <div class="grid-6">

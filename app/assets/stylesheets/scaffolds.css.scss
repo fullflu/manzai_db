@@ -1,10 +1,10 @@
 body {
   background-color: rgb(40,200,200);
-  font-size: 24px;
+  font-size: 14px;
   color: #333;
   margin: 0 auto;
-  width: 375;
-  height: 667;
+  width: 375px;
+  height: 667px;
 }
 h1,h2,h3,h4,h5,h6,p {
   padding: 10px 0;
@@ -20,4 +20,30 @@ header {
   background-color: yellow;
   margin: 0;
   padding: 0;
+  height: 80px;
+}
+
+.search_top{
+  background-color: blue;
+  width: 300px;
+}
+
+.header--search_title {
+  background-color: yellow;
+  margin: 0;
+  padding: 0;
+  height: 80px;
+}
+
+.search_title{
+  background-color: blue;
+  width: 300px;
+}
+
+.button {
+  height: 30px;
+  width: 40px;
+  background-color: black;
+  color: white;
+  border-style: none;
 }

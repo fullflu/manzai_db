@@ -31,7 +31,7 @@ class GroupsController < ApplicationController
   def index
     # binding.pry
     @group_keyword = params[:group_keyword]
-    @groups = Group.where('name LIKE(?)', "%#{params[:group_keyword]}%").page(params[:page]).per(2)
+    @groups = Group.where('name LIKE(?)', "%#{params[:group_keyword]}%").page(params[:page]).per(10)
     # @groups = Group.all
   end
 
@@ -62,7 +62,7 @@ class GroupsController < ApplicationController
     # binding.pry
     keyword = "%#{params[:keyword]}%"
     if params[:keyword].present?
-      @groups = Group.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
+      @groups = Group.where('name LIKE(?)', "%#{params[:keyword]}%")
     else
       @groups = []
     end

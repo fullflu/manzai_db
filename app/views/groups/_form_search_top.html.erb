@@ -1,10 +1,5 @@
-   <div id="main_cnt_wrapper">
-    <div id="yjContentsBody">
-      <div class="yjContainer">
-        <span class="yjGuid"><a id="yjContentsStart" name="yjContentsStart"></a><img alt="ここから本文です" height="1" src="http://i.yimg.jp/yui/jp/tmpl/1.1.0/audionav.gif" width="1"></span>
-        <div id="yjMain">
-          <article class="section">
-            <div class="container">
+
+            <div class="search_top">
               <header class="header header--search_top">
                 <h2 class="text-middle">
                   <i class="icon-movie color-gray-light"></i>検索
@@ -19,11 +14,6 @@
                 <%= label_tag :title_keyword, 'タイトル:' %>
                 <%= text_field_tag :title_keyword, @title_keyword %>
                 </p>
-                  <%= submit_tag "検索" %>
+                  <%= submit_tag "検索", class: 'button' %>
               <% end %>
-
-
             </div>
-          </article>
-        </div>
-        <div id="yjSub">
