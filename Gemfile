@@ -57,3 +57,5 @@ gem 'rubyzip', '>= 1.0.0'
 group :production do
   gem 'rails_12factor'
 end
+
+gem 'kaminari'

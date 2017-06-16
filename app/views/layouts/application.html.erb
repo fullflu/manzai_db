@@ -8,15 +8,13 @@
 </head>
 <body>
     <header class="header">
-      <div class="header__bar row">
-        <h1 class="grid-6"><a href="/">漫才データベースTOP</a></h1>
-        <% if user_signed_in? %>
           <div class="user_nav grid-6">
           <!-- <span class="entry_button" style="float: left"> <%= current_user.nickname %>さん -->
+          <% if user_signed_in? %>
           <span > <%= current_user.nickname %>さん
           <ul class="user__info">
           <!-- <li class="entry_button" style="float: left"> -->
-          <li　style="list-style:none;>
+          <li style="list-style:none;>
            <a href="/users/<%= current_user.id %>">マイページ</a>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
           </li>
@@ -35,5 +33,10 @@
 
 <%= yield %>
 
+
+    <footer>
+      <div class="footer_home">
+        <h1><a href="/">ホーム</a></h1>
+    </footer>
 </body>
 </html>
