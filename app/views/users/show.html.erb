@@ -2,7 +2,11 @@
   <header class="user_page-header">
     <div class="yjContainer">
       <a href="">
-        <h2> <%= current_user.nickname %> <span>さんのマイページ</span></h2>
+        <h2> <%= @user.nickname %> <span>さんのマイページ</span>
+        <% if @user.id == current_user.id %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <% end %>
+        </h2>
       </a>
     </div>
   </header>

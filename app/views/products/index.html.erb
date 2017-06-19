@@ -44,8 +44,7 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.user.nickname %></td>
-        <td><%= product.group.name %></td>
+        <td><%= link_to "#{product.user.nickname}", "/users/#{product.user_id}" %></td>
         <td><%= product.title %></td>
         <td><%= link_to '詳細', product %></td>
           <% if user_signed_in? && current_user.id == product.user_id %>

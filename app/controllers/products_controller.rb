@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
     @group = Group.find_by(id: params[:group_id])
     # @all_product_id = @group.products.select("id").pluck(:id)
     #@products = Product.where(group_id: params[:group_id]).includes([:group, :user])
-    @products = Product.includes([:group,:user]).where('products.group_id = ? && products.title LIKE(?)', "#{params[:group_id]}", "%#{params[:title_keyword]}%").page(params[:page]).per(10)
+    @products = Product.includes([:user]).where('products.group_id = ? && products.title LIKE(?)', "#{params[:group_id]}", "%#{params[:title_keyword]}%").page(params[:page]).per(10)
   end
 
   def index_all
