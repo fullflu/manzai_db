@@ -7,7 +7,7 @@
                 </p>
               </header>
               <%= form_tag('/groups/search_group', method: :get) do %>
-                <input class="search__query" name="keyword" placeholder="グループ名で検索" type="text" value=""><button class="btn-search" title="検索" type="submit"><i class="icon ion-search"></i></button></input>
+                <input class="search__query" name="keyword" placeholder="グループ名で検索" type="text" value=<%=@keyword %> ><button class="btn-search" title="検索" type="submit"><i class="icon ion-search"></i></button></input>
               <% end %>
             </div>
           </article>

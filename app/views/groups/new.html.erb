@@ -1,9 +1,9 @@
 <h1>新しくグループを作ってください</h1>
 
 <% if @product_id %>
-<h2>
+<h3>
  <%= "#{@group.name} はまだ登録されていません。ぼけとつっこみの名前を登録してください！" %>
-</h2>
+</h3>
 <% end %>
 <%= form_for(@group) do |f| %>
   <% if @group.errors.any? %>
@@ -26,15 +26,15 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "new-group-field" %>
   </div>
   <div class="field">
     <%= f.label :boke %><br>
-    <%= f.text_field :boke %>
+    <%= f.text_field :boke, class: "new-group-field" %>
   </div>
   <div class="field">
     <%= f.label :tsukkomi %><br>
-    <%= f.text_field :tsukkomi %>
+    <%= f.text_field :tsukkomi, class: "new-group-field" %>
   </div>
 
   <% if @edit_error_message %>
