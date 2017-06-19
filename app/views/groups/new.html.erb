@@ -1,4 +1,4 @@
-<h1>新しくグループを作ってください</h1>
+<p>新しくグループを作ってください</p>
 
 <% if @product_id %>
 <h3>
@@ -25,15 +25,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name , value: "グループ名" %><br>
     <%= f.text_field :name, class: "new-group-field" %>
   </div>
   <div class="field">
-    <%= f.label :boke %><br>
+    <%= f.label :boke, value: "ぼけ" %><br>
     <%= f.text_field :boke, class: "new-group-field" %>
   </div>
   <div class="field">
-    <%= f.label :tsukkomi %><br>
+    <%= f.label :tsukkomi, value: "つっこみ" %><br>
     <%= f.text_field :tsukkomi, class: "new-group-field" %>
   </div>
 
@@ -41,10 +41,11 @@
     <%= f.hidden_field :title, :value => @title %>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <br>
+
+  <div>
+    <%= f.submit "決定", class: "btn-create-group"%>
+    </div>
 <% end %>
 
 
-<%= link_to 'グループ一覧に戻る', groups_path %>
