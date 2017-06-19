@@ -19,7 +19,8 @@ a {
     line-height: 40px;
     color: black;
     border: 1px;
-    padding: 1px;
+    padding: 5px;
+    font-size: 40px;
 }
 
 header {
@@ -47,11 +48,19 @@ header {
         text-decoration: none;
         margin: 0 auto;
         color: #fff;
+        font-size: 70px;
     }
     a:active, a:focus{
         color: #FFDAB9;
     }
   }
+}
+
+.field{
+textarea {
+width: 250px;
+height: 10em;
+}
 }
 
 .search {

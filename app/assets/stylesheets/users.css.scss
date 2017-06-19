@@ -4,18 +4,37 @@
     color: gray;
 }
 
-.logout{
-     position: absolute;
-    top: 200px;
-    right: 20px;
+.clearfix:after{
+    display:block;
+    content:"";
+    clear: both;
 }
 
+.logout{
+     //position: absolute;
+    //top: 170px;
+    right: 20px;
+    float: right;
+    margin: 5px auto;
+}
+
+.edit{
+     //position: absolute;
+    //top: 170px;
+    left: 20px;
+    float: left;
+    margin: 5px auto;
+}
+
+
 .products{
+    margin: 30px auto;
     .user-posts{
     font-weight: bold;
     }
     .user-products{
      color: black;
      background-color: white;
+     margin: 5px auto;
     }
 }
