@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:show,:edit,:delete,:update]
+  resources :users, only: :show
   resources :groups, shallow: true do
     resources :products do
       collection do
