@@ -6,13 +6,16 @@
 
 .logout{
      position: absolute;
-    top: 120px;
+    top: 200px;
     right: 20px;
 }
 
 .products{
-    p{
-    
+    .user-posts{
+    font-weight: bold;
     }
-    color: black;
+    .user-products{
+     color: black;
+     background-color: white;
+    }
 }
