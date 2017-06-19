@@ -9,8 +9,6 @@
               <%= form_tag('/groups/search_group', method: :get) do %>
                 <input class="search__query" name="keyword" placeholder="グループ名で検索" type="text" value=""><button class="btn-search" title="検索" type="submit"><i class="icon ion-search"></i></button></input>
               <% end %>
-              <form accept-charset="utf-8" action="/" class="js-search-submit" method="get">
-              </form>
             </div>
           </article>
           <article class="section">
@@ -22,11 +20,9 @@
               </header>
           <% if @groups.length > 0 %>
                 <% @groups.each do |group| %>
-                  <a class="listview__element--right-icon" href="/groups/<%= group.id %>/products/create_title" title="<%= group.name %>">
-                        <p class="search-results">
-                          <span class="color-sub"><%= group.name %></span>
-                        </p>
-                  </a>
+                <p class="search-results">
+                <%= link_to "#{group.name}" ,"/groups/#{group.id}/products/create_title" %>
+                </p>
               <% end %>
               <%= paginate(@groups) %>
             <% elsif @keyword %>
