@@ -5,7 +5,7 @@ html{
 
 body {
   background-color: rgb(40,200,200);
-  font-size: 14px;
+  font-size: 50px;
   color: #333;
   margin: 0;
 }
@@ -16,7 +16,7 @@ h1,h2,h3,h4,h5,h6,p {
 
 header {
   background-color: gray;
-  height: 50px;
+  height: 75px;
 }
 
 .funcbtn{
@@ -30,11 +30,11 @@ header {
     text-align: center;
     display: flex;
     align-items: center;
-    width: 33%;
-    height: 50px;
+    width: 33.4%;
+    height: 140px;
     z-index: 70;
     background-color: #f6a096;
-    font-size: 25px;
+    font-size: 70px;
     a{
         text-decoration: none;
         margin: 0 auto;
@@ -46,15 +46,10 @@ header {
   }
 }
 
-
-
-
-
-
 .search {
-  position: fixed;
+  //position: absolute;
   width: 100%;
-  bottom:70px;
+  bottom:20px;
   height: 142px;
   margin: 5px auto;
 }

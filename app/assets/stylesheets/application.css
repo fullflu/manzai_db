@@ -12,7 +12,6 @@
  *
  *= require_tree .
  *= require_self
- @import 'ionicons';
  */
 .new-group-button-before-post{
     display: inline-block; 
