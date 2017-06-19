@@ -15,15 +15,20 @@
 
   <footer class="funcbtn">
    <div class="funcbtn-contents">
-    <p><a href="/">home </a>
-    </p>
+    <a href="/">
+     <i class="icon ion-home"></i>
+    </a>
   </div>
   <% if user_signed_in?%>
     <div class="funcbtn-contents">
-      <a class="mypagelink" href="/users/<%= current_user.id %>">my page</a>
+      <a class="postlink" href="/groups/search_group">
+      <i class="icon ion-compose"></i>
+      </a>
     </div>
     <div class="funcbtn-contents">
-      <a class="postlink" href="/groups/search_group">post</a>
+      <a class="mypagelink" href="/users/<%= current_user.id %>">
+      <i class="icon ion-person"></i>
+      </a>
     </div>
   <% else %>
     <div class="funcbtn-contents">

@@ -59,3 +59,5 @@ group :production do
 end
 
 gem 'kaminari'
+
+gem 'ionicons-rails'

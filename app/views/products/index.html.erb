@@ -45,8 +45,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= link_to "#{product.user.nickname}", "/users/#{product.user_id}" %></td>
-        <td><%= product.title %></td>
-        <td><%= link_to '詳細', product %></td>
+        <td><%= link_to "#{product.title}", product %></td>
           <% if user_signed_in? && current_user.id == product.user_id %>
         <td><%= link_to '編集', edit_product_path(product) %></td>
         <td><%= link_to '削除', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>

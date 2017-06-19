@@ -1,6 +1,8 @@
 html{
 }
 
+ @import 'ionicons';
+
 body {
   background-color: rgb(40,200,200);
   font-size: 14px;
@@ -25,9 +27,10 @@ header {
   display: flex;
   justify-content: space-around;
   .funcbtn-contents{
+    text-align: center;
     display: flex;
     align-items: center;
-    width: 25%;
+    width: 33%;
     height: 50px;
     z-index: 70;
     background-color: #f6a096;
@@ -49,6 +52,9 @@ header {
 
 
 .search {
+  position: fixed;
+  width: 100%;
+  bottom:70px;
   height: 142px;
   margin: 5px auto;
 }
