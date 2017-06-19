@@ -1,14 +1,14 @@
 <div class="user_page">
-  <header class="user_page-header">
-    <div class="yjContainer">
-      <a href="">
-        <h2> <%= current_user.nickname %> <span>さんのマイページ</span></h2>
+    <div class="user_page_head">
+        <% if @user.id == current_user.id %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout" %>
+        <% end %>
+        <p> <%= @user.nickname %> <span>さんのマイページ</span>
+        </p>
       </a>
     </div>
-  </header>
-    <div id="yjContentsBody">
-          <%= "#{current_user.nickname}さんの投稿タイトル一覧" %>
       <div class="products">
+       <p class="user-posts"> <%= "#{current_user.nickname}さんの投稿タイトル一覧" %> <p>
         <% @products.each do |product| %>
         <p>
           <%= link_to "#{product.title}", product_path(product.id) %>
@@ -16,5 +16,4 @@
         </p>
         <% end %>
       </div>
-    </div>
   </div>

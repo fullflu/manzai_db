@@ -8,32 +8,37 @@
 </head>
 <body>
     <header class="header">
-      <div class="header__bar row">
-        <h1 class="grid-6"><a href="/">漫才データベースTOP</a></h1>
-        <% if user_signed_in? %>
-          <div class="user_nav grid-6">
-          <!-- <span class="entry_button" style="float: left"> <%= current_user.nickname %>さん -->
-          <span > <%= current_user.nickname %>さん
-          <ul class="user__info">
-          <!-- <li class="entry_button" style="float: left"> -->
-          <li　style="list-style:none;>
-           <a href="/users/<%= current_user.id %>">マイページ</a>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-          </li>
-          </ul>
-          </span>
-          <a class="post" href="/groups/search_group">投稿する</a>
-        </div>
-        <% else %>
-          <div class="grid-6">
-            <%= link_to "ログイン", new_user_session_path, class: 'post' %>
-            <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
-          </div>
-        <% end %>
-      </div>
-    </header>
-
+   <a href = "/groups">グループ一覧</a>
+   <%= link_to '全タイトル一覧', products_path %>
+</header>
 <%= yield %>
+
+  <footer class="funcbtn">
+   <div class="funcbtn-contents">
+    <a href="/">
+     <i class="icon ion-home"></i>
+    </a>
+  </div>
+  <% if user_signed_in?%>
+    <div class="funcbtn-contents">
+      <a class="postlink" href="/groups/search_group">
+      <i class="icon ion-compose"></i>
+      </a>
+    </div>
+    <div class="funcbtn-contents">
+      <a class="mypagelink" href="/users/<%= current_user.id %>">
+      <i class="icon ion-person"></i>
+      </a>
+    </div>
+  <% else %>
+    <div class="funcbtn-contents">
+      <%= link_to "ログイン", new_user_session_path, class: 'loginlink' %>
+    </div>
+    <div class="funcbtn-contents">
+      <%= link_to "新規登録", new_user_registration_path, class: 'signinlink' %>
+    </div>
+  <% end %>
+  </footer>
 
 </body>
 </html>

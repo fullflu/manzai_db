@@ -8,6 +8,10 @@ class GroupsController < ApplicationController
     @groups = []
     @group = Group.new
     @product = Product.new
+    rank_dict = Comment.group(:product_id).order('sum_good DESC').limit(10).sum(:good)
+    product_ids = rank_dict.keys
+    @ranking_values = rank_dict.values
+    @ranking = product_ids.map{|id| Product.find(id)}
   end
 
   def search_top
@@ -31,7 +35,7 @@ class GroupsController < ApplicationController
   def index
     # binding.pry
     @group_keyword = params[:group_keyword]
-    @groups = Group.where('name LIKE(?)', "%#{params[:group_keyword]}%")
+    @groups = Group.where('name LIKE(?)', "%#{params[:group_keyword]}%").page(params[:page]).per(10)
     # @groups = Group.all
   end
 
@@ -60,9 +64,9 @@ class GroupsController < ApplicationController
 
   def search_group
     # binding.pry
-    keyword = "%#{params[:keyword]}%"
+    @keyword = params[:keyword]
     if params[:keyword].present?
-      @groups = Group.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
+      @groups = Group.where('name LIKE(?)', "%#{params[:keyword]}%").page(params[:page]).per(10)
     else
       @groups = []
     end

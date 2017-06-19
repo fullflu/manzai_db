@@ -66,6 +66,7 @@ GEM
       activesupport (>= 4.2.0)
     hike (1.2.3)
     i18n (0.8.4)
+    ionicons-rails (2.0.0)
     jbuilder (2.6.4)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2)
@@ -74,6 +75,18 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.6)
+    kaminari (1.0.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.0.1)
+      kaminari-activerecord (= 1.0.1)
+      kaminari-core (= 1.0.1)
+    kaminari-actionview (1.0.1)
+      actionview
+      kaminari-core (= 1.0.1)
+    kaminari-activerecord (1.0.1)
+      activerecord
+      kaminari-core (= 1.0.1)
+    kaminari-core (1.0.1)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.5)
@@ -180,8 +193,10 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise
+  ionicons-rails
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   mysql2 (>= 0.3.20)
   pry-rails
   rails (= 4.2.6)

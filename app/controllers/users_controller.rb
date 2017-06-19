@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
     def show
-        @products = Product.includes(:group).where(user_id: current_user.id)
+        # binding.pry
+        @user = User.find(params[:id])
+        @products = Product.includes(:group).where(user_id: @user.id)
     end
 end

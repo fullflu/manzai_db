@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
     def create
         # binding.pry
         new_comment = Comment.create(create_params)
-        #binding.pry
+        # binding.pry
         #comment_view = Comment.find(params[:prev_id])
         #comment_view.update(post_id: )
         # redirect_to controller: :products, action: :index, group_id: Product.find(params[:product_id]).group_id
@@ -44,10 +44,10 @@ class CommentsController < ApplicationController
     end
 
     def update
-        #binding.pry
+        # binding.pry
         comment = Comment.find(params[:id])
-        if comment.product.user_id != current_user.id
-            comment.update(update_params)
+        if comment.product.user_id == current_user.id
+            comment.update_attribute(:daihon, update_params[:daihon])
         end
         redirect_to controller: :products, action: :show, id: comment.product_id
     end

@@ -1,69 +1,98 @@
+html{
+}
+
+ @import 'ionicons';
+
 body {
-  background-color: #fff;
+  background-color: rgb(40,200,200);
+  font-size: 50px;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  margin: 0;
+}
+h1,h2,h3,h4,h5,h6,p {
+  padding: 10px 0;
+  margin: 0;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+header {
+  background-color: gray;
+  height: 75px;
 }
 
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
-
-a {
-  color: #000;
-  &:visited {
-    color: #666;
+.funcbtn{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 60;
+  display: flex;
+  justify-content: space-around;
+  .funcbtn-contents{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 33.4%;
+    height: 140px;
+    z-index: 70;
+    background-color: #f6a096;
+    font-size: 70px;
+    a{
+        text-decoration: none;
+        margin: 0 auto;
+        color: #fff;
+    }
+    a:active, a:focus{
+        color: #FFDAB9;
+    }
   }
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
 }
 
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
+.search {
+  //position: absolute;
+  width: 100%;
+  bottom:20px;
+  height: 142px;
+  margin: 5px auto;
 }
 
-#notice {
-  color: green;
+
+.header--search_top {
+  background-color: yellow;
+  margin: auto auto;
+  padding: 0;
+  height: 30px;
 }
 
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+.search_top{
+  background-color: blue;
+  width: 250px;
+  padding: 0;
+
 }
 
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px;
-    margin-bottom: 0px;
-    background-color: #c00;
-    color: #fff;
-  }
-  ul li {
-    font-size: 12px;
-    list-style: square;
-  }
+.text-middle{
+  text-align: center;
+  margin: auto auto;
+  padding: 0;
+
+}
+
+.header--search_title {
+  background-color: yellow;
+  margin: auto auto;
+  padding: 0;
+  height: 30px;
+}
+
+.search_title{
+  background-color: blue;
+  width: 250px;
+  padding: 0;
+}
+
+.button {
+  height: 30px;
+  width: 40px;
+  background-color: black;
+  color: white;
+  border-style: none;
 }

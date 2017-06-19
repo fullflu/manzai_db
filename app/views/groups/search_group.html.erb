@@ -24,7 +24,7 @@
                   <i class="icon-movie color-gray-light"></i>検索結果
                 </h2>
               </header>
-                          <% if @groups.length > 0 %>
+          <% if @groups.length > 0 %>
               <ul class="listview js-lazy-load-images">
                 <% @groups.each do |group| %>
                 <li>
@@ -47,9 +47,11 @@
                     </div>
                   </a>
                 </li>
-                <% end %>
+              <% end %>
               </ul>
-
+              <%= paginate(@groups) %>
+            <% elsif @keyword %>
+             <%= "「#{@keyword}」はまだ登録されていません。" %>
             <% end%>
             </div>
             <h2 style="display: inline">
@@ -59,4 +61,4 @@
         </div>
         <div id="yjSub">
 
-<%= link_to 'トップへ戻る', root_path %>
+

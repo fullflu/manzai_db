@@ -13,21 +13,25 @@
   </thead>
 
   <%= form_tag("/products/dl_test", method: :post) do %>
+  <%= check_box_tag 'check_all_products', true, false, :id => "check_all_products" , :name => "check_all_products"%>
+  <label for="check_all_products"> <%="台本をすべてダウンロード"%></label>
+  <br>
+
   <%= check_box_tag 'check_all', true, false, :id => "check_all" , :name => "check_all"%>
-  <label for="check_all">すべてを選択  </label>
-  <%= submit_tag("ダウンロードする") %>
+  <label for="check_all">このページをすべて選択  </label>
+  <br>
+  <%= submit_tag("ダウンロード実行") %>
 
   <tbody>
      <div id="checks">
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.user.nickname %></td>
+        <td><%= link_to "#{product.user.nickname}", "/users/#{product.user_id}" %></td>
         <td><%= link_to product.group.name, group_products_path(:group_id => product.group.id) %></td>
-        <td><%= product.title %></td>
-        <td><%= link_to '詳細', product %></td>
+        <td><%= link_to "#{product.title}", product %></td>
           <% if user_signed_in? && current_user.id == product.user_id %>
         <td><%= link_to '編集', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '削除', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
          <% end %>
        <td><%= check_box_tag 'check_id_[]',product.id, false, :id => "check_id_#{product.id}", :class => "check"%></td>
       </tr>
@@ -36,10 +40,10 @@
   </tbody>  <% end %>
 </table>
 
+<%= paginate(@products) %>
+
 
 <%= render partial: "groups/form_search_top", locals: { group_keyword: @group_keyword, title_keyword: @title_keyword} %>
 
 <br>
 
-
-<%= link_to 'トップに戻る', root_path %>

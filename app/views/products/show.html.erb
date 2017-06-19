@@ -22,6 +22,11 @@
 
 <br>
 
+<%= link_to 'タイトルの編集', edit_product_path(@product) %>
+<%= link_to "#{@product.group.name}のタイトル一覧", group_products_path(@product.group.id) %>
+
+<br>
+
     <ul style="padding: 0">
     <% if @last_id %>
     <% @comments_view.each do |comment| %>
@@ -82,7 +87,4 @@
 
 
 
-<br>
-<%= link_to 'タイトルの編集', edit_product_path(@product) %>
-<%= link_to "#{@product.group.name}のタイトル一覧", group_products_path(@product.group.id) %>
-<%= link_to '全タイトル一覧', products_path %>
+

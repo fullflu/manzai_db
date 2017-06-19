@@ -8,8 +8,9 @@ class ProductsController < ApplicationController
     # binding.pry
     @title_keyword = params[:title_keyword]
     @group = Group.find_by(id: params[:group_id])
+    # @all_product_id = @group.products.select("id").pluck(:id)
     #@products = Product.where(group_id: params[:group_id]).includes([:group, :user])
-    @products = Product.includes([:group,:user]).where('products.group_id = ? && products.title LIKE(?)', "#{params[:group_id]}", "%#{params[:title_keyword]}%")
+    @products = Product.includes([:user]).where('products.group_id = ? && products.title LIKE(?)', "#{params[:group_id]}", "%#{params[:title_keyword]}%").page(params[:page]).per(10)
   end
 
   def index_all
@@ -17,12 +18,20 @@ class ProductsController < ApplicationController
     @group_keyword = params[:group_keyword]
     @title_keyword = params[:title_keyword]
     # binding.pry
-    @products = Product.includes([:group,:user]).joins(:group).where('products.title LIKE(?) && groups.name LIKE(?)', "%#{params[:title_keyword]}%","%#{params[:group_keyword]}%")
+    @products = Product.includes([:group,:user]).joins(:group).where('products.title LIKE(?) && groups.name LIKE(?)', "%#{params[:title_keyword]}%","%#{params[:group_keyword]}%").page(params[:page]).per(10)
     # @products = Product.all.includes([:group, :user])
     #binding.pry
   end
 
   def dl_test
+    # binding.pry
+    if params[:check_all_products]
+      if params[:group_id]
+        params[:check_id_] = Group.find(params[:group_id]).products.select("id").pluck(:id)
+      else
+        params[:check_id_] = Product.all.select("id").pluck(:id)
+      end
+    end
     if params[:group_id]
       to_zip
       # binding.pry
