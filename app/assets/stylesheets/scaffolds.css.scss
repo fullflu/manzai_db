@@ -7,11 +7,13 @@ body {
   background-color: rgb(40,200,200);
   font-size: 50px;
   color: #333;
-  margin: 0;
+  margin: 0 0 200px;
+  //margin_bottom: 100px;
 }
 h1,h2,h3,h4,h5,h6,p {
   padding: 10px 0;
   margin: 0;
+  //margin_bottom: 100px;
 }
 
 a {
@@ -56,10 +58,22 @@ header {
   }
 }
 
+.search__query{
+    font-size: 30px;
+}
+
+.btn-search{
+  //height: 20px;
+  font-size: 30px;
+  //border-radius: 5px;
+  -webkit-appearance: 5px;
+}
+
 .field{
 textarea {
 width: 250px;
-height: 10em;
+height: 10px;
+fontsize: 30px;
 }
 }
 
