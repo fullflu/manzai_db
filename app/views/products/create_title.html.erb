@@ -1,6 +1,6 @@
-<h2>
+<p>
 <%= "#{@group.name}のタイトルを作る" %>
-</h2>
+</p>
 
 <%= form_for [@group, @product] do |f| %>
   <% if @product.errors.any? %>
@@ -17,9 +17,7 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title , class: "title-field" %>
   </div>
-  <div class="actions">
-    <%= f.submit "タイトルを作成"%>
-  </div>
+    <%= f.submit "タイトルを作成", class: "btn-create-title"%>
 <% end %>
