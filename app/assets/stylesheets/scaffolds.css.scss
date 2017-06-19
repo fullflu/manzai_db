@@ -14,6 +14,15 @@ h1,h2,h3,h4,h5,h6,p {
   margin: 0;
 }
 
+a {
+    //text-decoration: none;
+    line-height: 40px;
+    color: black;
+    border: 1px;
+    padding: 5px;
+    font-size: 40px;
+}
+
 header {
   background-color: gray;
   height: 75px;
@@ -39,11 +48,19 @@ header {
         text-decoration: none;
         margin: 0 auto;
         color: #fff;
+        font-size: 70px;
     }
     a:active, a:focus{
         color: #FFDAB9;
     }
   }
+}
+
+.field{
+textarea {
+width: 250px;
+height: 10em;
+}
 }
 
 .search {

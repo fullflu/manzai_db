@@ -1,18 +1,19 @@
 <div class="user_page">
-    <div class="user_page_head">
-        <% if @user.id == current_user.id %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout" %>
-        <% end %>
+    <div class="user_page_head clearfix">
+        <% if user_signed_in? && @user.id == current_user.id %>
         <p> <%= @user.nickname %> <span>さんのマイページ</span>
         </p>
-      </a>
+          <%= link_to "アカウント設定変更", edit_user_registration_path, method: :get, class: "edit" %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout" %>
+        <% end %>
+
     </div>
       <div class="products">
-       <p class="user-posts"> <%= "#{current_user.nickname}さんの投稿タイトル一覧" %> <p>
+       <p class="user-posts"> <%= "#{@user.nickname}さんの投稿タイトル一覧" %> <p>
         <% @products.each do |product| %>
-        <p>
-          <%= link_to "#{product.title}", product_path(product.id) %>
-          (<%= link_to "#{product.group.name}", group_path(product.group.id) %>)
+        <p class=user-products>
+          <%= link_to "#{product.title}", product_path(product.id), class: "title" %>
+          (<%= link_to "#{product.group.name}", group_path(product.group.id), class: "group" %>)
         </p>
         <% end %>
       </div>

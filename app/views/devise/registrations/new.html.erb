@@ -11,7 +11,7 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> 6文字以上)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
@@ -21,7 +21,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="label"><%= f.label :nickname %><em>(6 characters maximum)</em><br />
+  <div class="label"><%= f.label :nickname %><em>(6文字以上)</em><br />
     <%= f.text_field :nickname, placeholder: 'ニックネームを入力(必須)' %></div>
   <!-- <div class="field">
   <%= f.file_field :avatar %>

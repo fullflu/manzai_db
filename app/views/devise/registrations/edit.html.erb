@@ -13,12 +13,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.label :password %> <i>(変更しないならば、空白のままにしてください。</i>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+      <em><%= @minimum_password_length %>文字以上</em>
+    <% end %>）<br />
+    <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
@@ -26,8 +25,11 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+    <div class="label"><%= f.label :nickname %><em>(6文字以上)</em><br />
+    <%= f.text_field :nickname, placeholder: 'ニックネームを入力(必須)' %></div>
+
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password %> <i>(本人認証のため現在のパスワードが必要です)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
