@@ -13,12 +13,29 @@
 table{
     width: 99%;
     margin: 5px auto;
+    font-size: 25px;
+    //padding: 10px 10px;
+    a{
+    font-size: 25px;
+    }
 }
+
+th{
+    font-size: 30px;
+}
+
+    .check{
+        width: 30px;
+        height: 30px;
+    }
+
 td{
     border: solid .5px;
-    margin: 5px 10px;
+    //margin: 5px 10px;
     background-color: white;
     text-align: center;
+    padding: 10px 5px;
+    //font-size: 25px;
 }
 .top-index{
      //display: block;

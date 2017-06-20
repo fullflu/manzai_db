@@ -8,7 +8,9 @@
       <th>User</th>
       <th>Group</th>
       <th>Title</th>
-      <th colspan="3"></th>
+      <th>いいね</th>
+      <th>Download</th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -29,10 +31,7 @@
         <td><%= link_to "#{product.user.nickname}", "/users/#{product.user_id}" %></td>
         <td><%= link_to product.group.name, group_products_path(:group_id => product.group.id) %></td>
         <td><%= link_to "#{product.title}", product %></td>
-          <% if user_signed_in? && current_user.id == product.user_id %>
-        <td><%= link_to '編集', edit_product_path(product) %></td>
-        <td><%= link_to '削除', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-         <% end %>
+        <td><%= product.comments.sum("good") %> </td>
        <td><%= check_box_tag 'check_id_[]',product.id, false, :id => "check_id_#{product.id}", :class => "check"%></td>
       </tr>
   <% end %>
