@@ -1,63 +1,75 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>投稿者:</strong>
-  <%= @product.user.nickname -%>さん
-</p>
+<div class="head-comment">
+  <p>
+    <strong>投稿者:</strong>
+    <%= @product.user.nickname -%>さん
+  </p>
 
-<p>
-  <strong>グループ:</strong>
-  <%= link_to @product.group.name, group_products_path(@product.group.id) %>
-</p>
+  <p>
+    <strong>グループ:</strong>
+    <%= link_to @product.group.name, group_products_path(@product.group.id) %>
+  </p>
 
-<p>
-  <strong>タイトル:</strong>
-  <%= @product.title %>
-</p>
+  <p>
+    <strong>タイトル:</strong>
+    <%= @product.title %>
+  </p>
+</div>
+
 
   <%= form_tag("/products/dl_test", method: :post) do %>
   <%= hidden_field_tag :id, @product.id %>
-  <%= submit_tag("ダウンロードする") %>
+  <%= submit_tag("この台本をダウンロードする", class: "btn-download") %>
   <% end %>
 
-<br>
-
 <% if user_signed_in? && current_user.id == @product.user_id %>
-  <td><%= link_to '編集', edit_product_path(@product) %></td>
-  <td><%= link_to '削除', @product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-<% end %>
-
-<%= link_to "#{@product.group.name}のタイトル一覧", group_products_path(@product.group.id) %>
-
 <br>
+  <td><%= link_to 'タイトルの編集', edit_product_path(@product) %></td>
+  <td><%= link_to 'タイトルの削除', @product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<br>
+<% end %>
 
     <ul style="padding: 0">
     <% if @last_id %>
     <% @comments_view.each do |comment| %>
     <li style="border-bottom: dotted 1px">
-      <div class="thumbnail__caption">
+      <div class="comments">
         <p>
           <% if comment.tsukkomi %>
+             <div class="member-name">
             <%= "#{comment.product.group.tsukkomi}（つっこみ）"-%>
+            </div>
+            <p class="comment-element">
             <%= "「#{comment.daihon}」"%>
+            </p>
           <% else %>
+             <div class="member-name">
             <%= "#{comment.product.group.boke}（ぼけ）" -%>
+            </div>
+            <p class="comment-element">
             <%= "「#{comment.daihon}」" %>
+            </p>
           <% end %>
-          <% if user_signed_in? && current_user.id == @product.user_id %>
-            <%= link_to '直前に挿入', "/products/#{@product.id}/comments/#{comment.id}/add", method: :get %>
-            <%= link_to '編集', "/comments/#{comment.id}/edit", method: :get %>
-            <%= link_to '削除', "/comments/#{comment.id}", method: :delete %>
-          <% end %>
-          <div id="like-buttons">
-          <%= render partial: "likes/like", locals: { comment: comment}%>
+          <div class="comment-fixer clearfix">
+           <div class="fixer">
+            <% if user_signed_in? && current_user.id == @product.user_id %>
+              <%= link_to '直前に挿入', "/products/#{@product.id}/comments/#{comment.id}/add", method: :get %>
+              <%= link_to '編集', "/comments/#{comment.id}/edit", method: :get %>
+              <%= link_to '削除', "/comments/#{comment.id}", method: :delete %>
+            <% end %>
+            </div>
+            <div id="like-buttons">
+            <%= render partial: "likes/like", locals: { comment: comment}%>
+            </div>
           </div>
 
-
-        </p>
-      </div>
-    </li>
-    <% end %>
+            </p>
+          </div>
+        </li>
+      <% end %>
+    <% else %>
+     <%= "まだセリフが投稿されていません。" %>
     <% end %>
     </ul>
 
@@ -66,7 +78,11 @@
      <% if current_user.id == @product.user_id %>
       <%= form_for [@product, @comment] do |f|%>
         <% if @last_id %>
-         次は<%= @tsukkomi_next %>を入力してください
+          <% if @tsukkomi_next_flg %>
+            次は<strong><%= "#{@product.group.tsukkomi}"%></strong>のセリフを入力してください
+          <% else %>
+            次は<strong><%= "#{@product.group.boke}"%></strong>のセリフを入力してください
+          <% end %>
           <%= f.hidden_field :tsukkomi, :value => @tsukkomi_next_flg %>
         <% else %>
             つっこみ、ぼけのどちらから漫才が始まるか選んでください
@@ -78,12 +94,12 @@
           </div>
           <div>
           <% end %>
-      <div class="daihon_input">
+      <div class="daihon-input">
       <%= f.hidden_field :prev_id, :value => @last_id %>
-      <%= f.text_area :daihon, :placeholder => "台本を入力してください" %>
+      <%= f.text_area :daihon, :placeholder => "セリフを入力してください", id: "element" %>
       </div>
       </div>
-      <%= f.submit %>
+      <%= f.submit("セリフを追加",class: "btn-create-group")%>
       <% end %>
      <% end %>
     <% end %>

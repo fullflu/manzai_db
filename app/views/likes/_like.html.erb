@@ -1,18 +1,18 @@
 <% if user_signed_in? %>
   <% if comment.like_user(current_user.id, comment) %>
-    <%= button_to "/products/#{comment.product_id}/comments/#{comment.id}/likes", method: :delete, :id=>"like-button_#{comment.id}",  remote: true do %>
+    <%= button_to "/products/#{comment.product_id}/comments/#{comment.id}/likes", method: :delete, :id=>"like-button_#{comment.id}", class: "btn-likes",  remote: true do %>
       <%= image_tag("icon_red_heart.png") %>
       <span>
         <%= comment.good %>
-        <%= "いいね" %>
+        <%= "" %>
       </span>
     <% end %>
   <% else %>
-    <%= button_to "/products/#{comment.product_id}/comments/#{comment.id}/likes", method: :post, :id=>"like-button_#{comment.id}", remote: true do %>
+    <%= button_to "/products/#{comment.product_id}/comments/#{comment.id}/likes", method: :post, :id=>"like-button_#{comment.id}", class: "btn-likes", remote: true do %>
       <%= image_tag("icon_heart.png") %>
       <span>
         <%= comment.good %>
-        <%= "いいね" %>
+        <%= "" %>
       </span>
     <% end %>
   <% end %>
@@ -20,6 +20,6 @@
       <%= image_tag("icon_heart.png") %>
       <span>
         <%= comment.good %>
-        <%= "いいね" %>
+        <%= "" %>
       </span>
 <% end %>
