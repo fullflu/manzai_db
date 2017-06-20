@@ -36,22 +36,34 @@
     <% if @last_id %>
     <% @comments_view.each do |comment| %>
     <li style="border-bottom: dotted 1px">
-      <div class="thumbnail__caption">
+      <div class="comments">
         <p>
           <% if comment.tsukkomi %>
+             <div class="member-name">
             <%= "#{comment.product.group.tsukkomi}（つっこみ）"-%>
+            </div>
+            <p class="comment-element">
             <%= "「#{comment.daihon}」"%>
+            </p>
           <% else %>
+             <div class="member-name">
             <%= "#{comment.product.group.boke}（ぼけ）" -%>
+            </div>
+            <p class="comment-element">
             <%= "「#{comment.daihon}」" %>
+            </p>
           <% end %>
-          <% if user_signed_in? && current_user.id == @product.user_id %>
-            <%= link_to '直前に挿入', "/products/#{@product.id}/comments/#{comment.id}/add", method: :get %>
-            <%= link_to '編集', "/comments/#{comment.id}/edit", method: :get %>
-            <%= link_to '削除', "/comments/#{comment.id}", method: :delete %>
-          <% end %>
-          <div id="like-buttons">
-          <%= render partial: "likes/like", locals: { comment: comment}%>
+          <div class="comment-fixer clearfix">
+           <div class="fixer">
+            <% if user_signed_in? && current_user.id == @product.user_id %>
+              <%= link_to '直前に挿入', "/products/#{@product.id}/comments/#{comment.id}/add", method: :get %>
+              <%= link_to '編集', "/comments/#{comment.id}/edit", method: :get %>
+              <%= link_to '削除', "/comments/#{comment.id}", method: :delete %>
+            <% end %>
+            </div>
+            <div id="like-buttons">
+            <%= render partial: "likes/like", locals: { comment: comment}%>
+            </div>
           </div>
 
 
