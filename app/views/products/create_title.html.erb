@@ -1,5 +1,5 @@
-<p>
-<%= "#{@group.name}のタイトルを作る" %>
+<p class="head-create-title">
+<%= link_to "#{@group.name}", group_products_path(:group_id => @group.id)%>のタイトルを作る
 </p>
 
 <%= form_for [@group, @product] do |f| %>
@@ -16,8 +16,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title , class: "title-field" %>
+    <%= f.text_field :title , class: "title-field", placeholder: "タイトルを入力してください" %>
   </div>
     <%= f.submit "タイトルを作成", class: "btn-create-title"%>
 <% end %>
+
