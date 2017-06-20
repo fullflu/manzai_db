@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>タイトル一覧</h1>
+<h3>タイトル一覧</h3>
 
 <table>
   <thead>
@@ -8,19 +8,21 @@
       <th>User</th>
       <th>Group</th>
       <th>Title</th>
-      <th colspan="3"></th>
+      <th>いいね</th>
+      <th>Download</th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
   <%= form_tag("/products/dl_test", method: :post) do %>
-  <%= check_box_tag 'check_all_products', true, false, :id => "check_all_products" , :name => "check_all_products"%>
+  <%= check_box_tag 'check_all_products', true, false, :id => "check_all_products" , :name => "check_all_products", class: "check_all_class"%>
   <label for="check_all_products"> <%="台本をすべてダウンロード"%></label>
   <br>
 
-  <%= check_box_tag 'check_all', true, false, :id => "check_all" , :name => "check_all"%>
-  <label for="check_all">このページをすべて選択  </label>
+  <%= check_box_tag 'check_all', true, false, :id => "check_all" , :name => "check_all", class: "check_all_class"%>
+  <label for="check_all"> <%="このページをすべて選択"%></label>
   <br>
-  <%= submit_tag("ダウンロード実行") %>
+  <%= submit_tag("ダウンロード実行", class: "btn-download") %>
 
   <tbody>
      <div id="checks">
@@ -29,10 +31,7 @@
         <td><%= link_to "#{product.user.nickname}", "/users/#{product.user_id}" %></td>
         <td><%= link_to product.group.name, group_products_path(:group_id => product.group.id) %></td>
         <td><%= link_to "#{product.title}", product %></td>
-          <% if user_signed_in? && current_user.id == product.user_id %>
-        <td><%= link_to '編集', edit_product_path(product) %></td>
-        <td><%= link_to '削除', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-         <% end %>
+        <td><%= product.comments.sum("good") %> </td>
        <td><%= check_box_tag 'check_id_[]',product.id, false, :id => "check_id_#{product.id}", :class => "check"%></td>
       </tr>
   <% end %>
