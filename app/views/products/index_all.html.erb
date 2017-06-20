@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>タイトル一覧</h1>
+<h3>タイトル一覧</h3>
 
 <table>
   <thead>
@@ -15,14 +15,14 @@
   </thead>
 
   <%= form_tag("/products/dl_test", method: :post) do %>
-  <%= check_box_tag 'check_all_products', true, false, :id => "check_all_products" , :name => "check_all_products"%>
+  <%= check_box_tag 'check_all_products', true, false, :id => "check_all_products" , :name => "check_all_products", class: "check_all_class"%>
   <label for="check_all_products"> <%="台本をすべてダウンロード"%></label>
   <br>
 
-  <%= check_box_tag 'check_all', true, false, :id => "check_all" , :name => "check_all"%>
-  <label for="check_all">このページをすべて選択  </label>
+  <%= check_box_tag 'check_all', true, false, :id => "check_all" , :name => "check_all", class: "check_all_class"%>
+  <label for="check_all"> <%="このページをすべて選択"%></label>
   <br>
-  <%= submit_tag("ダウンロード実行") %>
+  <%= submit_tag("ダウンロード実行", class: "btn-download") %>
 
   <tbody>
      <div id="checks">
