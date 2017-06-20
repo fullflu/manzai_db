@@ -1,55 +1,63 @@
 <p id="notice"><%= notice %></p>
 
 
-<h1>
-  <%= @group.name -%>のページ
-</h1>
+<p class="head-create-title">
+  <%= link_to "#{@group.name}", group_products_path(:group_id => @group.id) -%>のページ
+</p>
 
+<div class="group-member">
 <p>
-  <strong>Boke:</strong>
+  <strong>ぼけ:</strong>
   <%= @group.boke %>
 </p>
 
 <p>
-  <strong>Tsukkomi:</strong>
+  <strong>つっこみ:</strong>
   <%= @group.tsukkomi %>
 </p>
+</div>
 
-<h1>タイトル一覧</h1>
+<br>
+
+<p>
+<% if @title_keyword && @title_keyword.length > 0 %>
+<strong>タイトル検索結果</strong>
+<% else %>
+<strong>投稿済みタイトル一覧</strong>
+<% end %>
+</p>
 
 <table>
   <thead>
     <tr>
       <th>User</th>
-      <th>Group</th>
       <th>Title</th>
-      <th colspan="3"></th>
+      <th>いいね</th>
+      <th>Download</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
 
-  <br>
 
   <%= form_tag("/products/dl_test", method: :post) do %>
-  <%= check_box_tag 'check_all_products', true, false, :id => "check_all_products" , :name => "check_all_products"%>
+  <%= check_box_tag 'check_all_products', true, false, :id => "check_all_products" , :name => "check_all_products", class: "check_all_class"%>
   <label for="check_all_products"> <%="#{@group.name}の台本をすべてダウンロード"%></label>
+
   <br>
 
-  <%= check_box_tag 'check_all', true, false, :id => "check_all" , :name => "check_all"%>
+  <%= check_box_tag 'check_all', true, false, :id => "check_all" , :name => "check_all", class: "check_all_class"%>
   <label for="check_all">このページをすべて選択  </label>
   <%= hidden_field_tag :group_id, @group.id %>
   <br>
-  <%= submit_tag("ダウンロード実行") %>
+  <%= submit_tag("ダウンロード実行", class: "btn-download") %>
 
   <tbody>
     <% @products.each do |product| %>
       <tr>
         <td><%= link_to "#{product.user.nickname}", "/users/#{product.user_id}" %></td>
         <td><%= link_to "#{product.title}", product %></td>
-          <% if user_signed_in? && current_user.id == product.user_id %>
-        <td><%= link_to '編集', edit_product_path(product) %></td>
-        <td><%= link_to '削除', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <td><%= product.comments.sum("good") %> </td>
        <td><%= check_box_tag 'check_id_[]',product.id, false, :id => "check_id_#{product.id}", :class => "check"%></td>
       </tr>
     <% end %>
@@ -59,8 +67,9 @@
 
 <%= paginate(@products) %>
 
-<%= link_to "新しく#{@group.name}のタイトルを作る", create_title_group_products_path %>
-<%= link_to '全タイトル一覧', products_path %>
+<% if user_signed_in? %>
+<%= button_to '新しくタイトルを作成', create_title_group_products_path, method: :get, class: "btn-create-group" %>
+<% end %>
 
 <%= render partial: "products/form_search_title", locals: { group_keyword: @group_keyword, title_keyword: @title_keyword} %>
 

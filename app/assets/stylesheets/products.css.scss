@@ -4,10 +4,19 @@
 
 .title-field{
     font-size: 30px;
+    width: 700px;
+    margin: 10px 10px 20px;
 }
 
 .btn-create-title{
     font-size: 30px;
+}
+
+.head-create-title{
+    margin: 10px 0;
+    a{
+    font-size: 50px;
+    }
 }
 
 table{
@@ -27,6 +36,11 @@ th{
 .check_all_class{
     width: 30px;
     height: 30px;
+    //font-size: 20px;
+    margin: 5px 15px 5px;
+}
+label{
+font-size: 30px;
 }
 
 .check{
@@ -35,7 +49,7 @@ th{
 }
 
 .btn-download{
-    margin: 5px 5px;
+    margin: 15px 15px;
     font-size: 30px;
 }
 
@@ -58,4 +72,10 @@ td{
      padding: 10px 10px;
      margin: 10px auto;
      }
+}
+
+
+
+.group-member{
+    font-size: 30px;
 }

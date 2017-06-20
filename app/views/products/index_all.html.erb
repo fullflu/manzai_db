@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<% if @title_keyword && @title_keyword.length > 0 %>
+<h3>タイトル検索結果</h3>
+<% else %>
 <h3>タイトル一覧</h3>
+<% end %>
 
 <table>
   <thead>
