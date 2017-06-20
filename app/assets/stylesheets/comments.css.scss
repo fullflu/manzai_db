@@ -23,15 +23,26 @@
         float: left;
     }
 }
-    #like-buttons{
-        float: right;
-        //margin_right: 35px;
+
+#like-buttons{
+    float: right;
+    //margin_right: 35px;
+}
+
+.btn-likes{
+    //float: right;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+
+.daihon-input{
+    #element{
+    width: 700px;
+    font-size: 30px;
+    margin: 5px 10px;
     }
-    .btn-likes{
-        //float: right;
-        width: 200px;
-        height: 50px;
-        font-size: 20px;
-        text-align: center;
-        margin-right: 10px;
-    }
+}

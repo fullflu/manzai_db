@@ -23,14 +23,12 @@
   <%= submit_tag("この台本をダウンロードする", class: "btn-download") %>
   <% end %>
 
-<br>
-
 <% if user_signed_in? && current_user.id == @product.user_id %>
+<br>
   <td><%= link_to 'タイトルの編集', edit_product_path(@product) %></td>
   <td><%= link_to 'タイトルの削除', @product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-<% end %>
-
 <br>
+<% end %>
 
     <ul style="padding: 0">
     <% if @last_id %>
@@ -66,11 +64,12 @@
             </div>
           </div>
 
-
-        </p>
-      </div>
-    </li>
-    <% end %>
+            </p>
+          </div>
+        </li>
+      <% end %>
+    <% else %>
+     <%= "まだセリフが投稿されていません。" %>
     <% end %>
     </ul>
 
@@ -79,7 +78,11 @@
      <% if current_user.id == @product.user_id %>
       <%= form_for [@product, @comment] do |f|%>
         <% if @last_id %>
-         次は<%= @tsukkomi_next %>を入力してください
+          <% if @tsukkomi_next_flg %>
+            次は<strong><%= "#{@product.group.tsukkomi}"%></strong>のセリフを入力してください
+          <% else %>
+            次は<strong><%= "#{@product.group.boke}"%></strong>のセリフを入力してください
+          <% end %>
           <%= f.hidden_field :tsukkomi, :value => @tsukkomi_next_flg %>
         <% else %>
             つっこみ、ぼけのどちらから漫才が始まるか選んでください
@@ -91,12 +94,12 @@
           </div>
           <div>
           <% end %>
-      <div class="daihon_input">
+      <div class="daihon-input">
       <%= f.hidden_field :prev_id, :value => @last_id %>
-      <%= f.text_area :daihon, :placeholder => "台本を入力してください" %>
+      <%= f.text_area :daihon, :placeholder => "セリフを入力してください", id: "element" %>
       </div>
       </div>
-      <%= f.submit %>
+      <%= f.submit("セリフを追加",class: "btn-create-group")%>
       <% end %>
      <% end %>
     <% end %>
