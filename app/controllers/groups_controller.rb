@@ -27,8 +27,16 @@ class GroupsController < ApplicationController
       #@products = Product.where('title LIKE(?)', "%#{title_keyword}%")
     else
       @products = []
+      if params[:group_keyword].present?
      #@groups = Group.where('name LIKE(?)', "%#{group_keyword}%")
-      redirect_to :controller => 'groups', :action => "index", :group_keyword => group_keyword
+        redirect_to :controller => 'groups', :action => "index", :group_keyword => group_keyword
+      else
+        redirect_to :controller => 'groups', :action => "top"
+      end
+     # redirect_to :controller => 'groups', :action => "index", :group_keyword => group_keyword
+     # redirect_to :controller => 'groups', :action => "top"
+
+
     end
   end
 

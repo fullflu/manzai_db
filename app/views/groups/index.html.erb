@@ -28,7 +28,6 @@
 <%= paginate(@groups) %>
 
 <% if user_signed_in? %>
-<br>
 <%= button_to '新しくグループを作成', "/groups/new", method: :get, class: "btn-create-group" %>
 <% end %>
 

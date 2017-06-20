@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 
-<h3>
-  <%= @group.name -%>のページ
-</h3>
+<p class="head-create-title">
+  <%= link_to "#{@group.name}", group_products_path(:group_id => @group.id) -%>のページ
+</p>
 
 <div class="group-member">
 <p>
@@ -20,7 +20,11 @@
 <br>
 
 <p>
+<% if @title_keyword && @title_keyword.length > 0 %>
+<strong>タイトル検索結果</strong>
+<% else %>
 <strong>投稿済みタイトル一覧</strong>
+<% end %>
 </p>
 
 <table>
@@ -64,7 +68,6 @@
 <%= paginate(@products) %>
 
 <% if user_signed_in? %>
-<br>
 <%= button_to '新しくタイトルを作成', create_title_group_products_path, method: :get, class: "btn-create-group" %>
 <% end %>
 

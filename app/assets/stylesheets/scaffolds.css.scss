@@ -113,16 +113,25 @@ fontsize: 30px;
 }
 
 .header--search_title {
-  background-color: yellow;
-  margin: auto auto;
-  padding: 0;
-  height: 30px;
+  background-color: white;
+  //margin: 30px;
+  //height: 30px;
+    width: 700px;
+    p{
+    text-align: left;
+    font-size: 35px;
+    }
 }
 
 .search_title{
-  background-color: blue;
-  width: 250px;
-  padding: 0;
+  background-color: white;
+  width: 700px;
+  //padding: 0;
+  .element{
+  font-size: 30px;
+  width: 500px;
+  margin: 0 20px 0 15px;
+  }
 }
 
 
