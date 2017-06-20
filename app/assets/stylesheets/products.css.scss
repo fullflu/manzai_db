@@ -21,12 +21,17 @@
 }
 
 table{
-    width: 99%;
+    width: 95%;
     margin: 5px auto;
     font-size: 25px;
-    //padding: 10px 10px;
+    //padding: 10px 0;
     a{
-    font-size: 25px;
+    font-size: 35px;
+    }
+
+    td{
+        padding: 15px 5px;
+        //margin: 30px 0;
     }
 }
 
@@ -40,6 +45,7 @@ th{
     //font-size: 20px;
     margin: 5px 15px 5px;
 }
+
 label{
 font-size: 30px;
 }
