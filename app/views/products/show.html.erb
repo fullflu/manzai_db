@@ -35,6 +35,11 @@
     <% @comments_view.each do |comment| %>
     <li style="border-bottom: dotted 1px">
       <div class="comments">
+          <% if comment.tsukkomi %>
+            <div class="comment-tsukkomi">
+          <% else %>
+            <div class="comment-boke">
+          <% end %>
         <p>
           <% if comment.tsukkomi %>
              <div class="member-name">
@@ -65,6 +70,7 @@
           </div>
 
             </p>
+            </div>
           </div>
         </li>
       <% end %>
