@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<% if @group_keyword %>
-<h1> グループ検索結果 </h1>
+<% if @group_keyword && @group_keyword.length > 0 %>
+<h3> グループ検索結果 </h3>
 <% else %>
-<h1>グループ一覧</h1>
+<h3>グループ一覧</h3>
 <% end %>
 
 
@@ -25,15 +25,12 @@
     </div>
 
 
-<br>
-
 <%= paginate(@groups) %>
 
+<% if user_signed_in? %>
+<br>
+<%= button_to '新しくグループを作成', "/groups/new", method: :get, class: "btn-create-group" %>
+<% end %>
 
 <%= render partial: "form_search_top" %>
 
-<br>
-
-<% if user_signed_in? %>
-<%= link_to 'New Group', new_group_path %>
-<% end %>
