@@ -1,33 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>投稿者:</strong>
-  <%= @product.user.nickname -%>さん
-</p>
+<div class="head-comment">
+  <p>
+    <strong>投稿者:</strong>
+    <%= @product.user.nickname -%>さん
+  </p>
 
-<p>
-  <strong>グループ:</strong>
-  <%= link_to @product.group.name, group_products_path(@product.group.id) %>
-</p>
+  <p>
+    <strong>グループ:</strong>
+    <%= link_to @product.group.name, group_products_path(@product.group.id) %>
+  </p>
 
-<p>
-  <strong>タイトル:</strong>
-  <%= @product.title %>
-</p>
+  <p>
+    <strong>タイトル:</strong>
+    <%= @product.title %>
+  </p>
+</div>
+
 
   <%= form_tag("/products/dl_test", method: :post) do %>
   <%= hidden_field_tag :id, @product.id %>
-  <%= submit_tag("ダウンロードする") %>
+  <%= submit_tag("この台本をダウンロードする", class: "btn-download") %>
   <% end %>
 
 <br>
 
 <% if user_signed_in? && current_user.id == @product.user_id %>
-  <td><%= link_to '編集', edit_product_path(@product) %></td>
-  <td><%= link_to '削除', @product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <td><%= link_to 'タイトルの編集', edit_product_path(@product) %></td>
+  <td><%= link_to 'タイトルの削除', @product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 <% end %>
-
-<%= link_to "#{@product.group.name}のタイトル一覧", group_products_path(@product.group.id) %>
 
 <br>
 
