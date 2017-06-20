@@ -9,7 +9,7 @@
 
     </div>
       <div class="products">
-       <p class="user-posts"> <%= "#{@user.nickname}さんの投稿タイトル一覧" %> <p>
+       <h3 class="user-posts"> <%= "#{@user.nickname}さんの投稿タイトル一覧" %> </h3>
         <% @products.each do |product| %>
         <p class=user-products>
           <%= link_to "#{product.title}", product_path(product.id), class: "title" %>
