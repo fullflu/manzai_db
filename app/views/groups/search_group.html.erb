@@ -12,13 +12,13 @@
             </div>
           </article>
           <article class="section">
+          <% if @groups.length > 0 %>
             <div class="container">
               <header class="header header--section">
                 <p class="text-group-search">
                 <%= "検索結果" %>
                 </p>
               </header>
-          <% if @groups.length > 0 %>
                 <% @groups.each do |group| %>
                 <p class="search-results">
                 <%= link_to "#{group.name}" ,"/groups/#{group.id}/products/create_title" %>

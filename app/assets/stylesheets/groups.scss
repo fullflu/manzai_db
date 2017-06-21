@@ -12,7 +12,7 @@
 .search-results{
     //display: inline;
     font-weight: bold;
-    margin: auto auto;
+    margin: 10px auto;
     //padding: 50px 50px;
     text-align: center;
     background-color: white;
@@ -32,10 +32,12 @@
  color: black;
  background-color: white;
  margin: 10px auto;
+ text-align: center;
  }
 }
 
 .text-group-search{
-    font-size: 40px;
-    margin: 45px 5px 0 15px;
+    font-size: 45px;
+    font-weight: bold;
+    margin: 55px 5px 0 15px;
 }
