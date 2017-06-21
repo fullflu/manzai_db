@@ -11,28 +11,28 @@
     </div>
   <% end %>
 
-  <h2>
-  <% if @edit_error_message %>
-    "error"
-  <% end %>
-  </h2>
+  <h3>
+  タイトルを編集
+  </h3>
+  <p class="before-edit">
+    <%= " < 変更前 >" %>
+    <br>
+    <%= "「#{@product.group.name}」の「#{@product.title}」" %>
+  </p>
 
-  <h2>
-  <%= "#{@product.group.name}の#{@product.title}" %>
-  </h2>
+  <div class="edit-field">
   <%= fields_for @group, new_group_path do |c| %>
     <%= c.label :name, value: "グループ名を変更" %><br>
-    <%= c.text_field :name %>
+    <%= c.text_field :name, class: "group-update" %>
     <% end %>
+  </div>
 
-  <div class="field">
+  <div class="edit-field">
     <%= f.label :title, value: "タイトルを変更" %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "product-update" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit("更新", class: "btn-update") %>
+    <%= button_to "戻る",@product , class: "btn-update"%>
   </div>
 <% end %>
-
-<%= link_to 'Show', @product %>
-<%= link_to 'トップへ戻る', root_path %>

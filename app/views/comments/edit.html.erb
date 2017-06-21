@@ -1,19 +1,26 @@
-    <h3>
-      編集する
-    </h3>
+<h3>
+  <% if @comment.tsukkomi %>
+    <%= "#{@comment.product.group.tsukkomi}（つっこみ）のコメントを編集" %>
+  <% else %>
+    <%= "#{@comment.product.group.boke}（ぼけ）のコメントを編集" %>
+  <% end %>
+</h3>
+<br>
 <div class="contents row">
  <% if @prev_comment %>
    <%= "#{@prev_comment.daihon}（直前の発言）" %>
  <% else %>
-   <%= "これより前の発言はありません" %>
+   <%= "（これより前の発言はありません）" %>
  <% end %>
   <br>
   <br>
    <%= form_for(@comment) do |f|%>
       <div class="daihon_input">
-      <%= f.text_area :daihon %>
+      <%= f.text_area :daihon , class: "product-update"%>
       </div>
-     <%= f.submit %>
+     <%= f.submit("更新", class: "btn-update")%>
+    <%= button_to "戻る",@product , class: "btn-update"%>
+
   <% end %>
   <br>
  <% if @post_comment %>
@@ -23,5 +30,3 @@
  <% end %>
 </div>
 
-
-<%= link_to '台本に戻る', product_path(@comment.product_id) %>
