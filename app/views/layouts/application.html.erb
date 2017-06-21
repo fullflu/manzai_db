@@ -2,14 +2,15 @@
 <html>
 <head>
   <title>ManzaiDb</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
   <%= csrf_meta_tags %>
 </head>
 <body>
     <header class="header__ clearfix">
     <p class="top-message">
-    <%= link_to "漫才データベース", "/" %>
+    <%= link_to "笑い箱", "/" %>
+    <%= link_to "About", "/groups/intro", method: :get %>
     </p>
      <% if user_signed_in? %>
        <%= button_to "マイページ", "/users/#{current_user.id}", method: :get, class: "btn-mypage" %>

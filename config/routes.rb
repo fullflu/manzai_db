@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get 'search_group'
       get 'search_top'
       get 'search_group_top'
+      get 'intro'
     end
   end
   get 'products' => 'products#index_all'

@@ -2,8 +2,10 @@ class GroupsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :top]
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
-  # GET /groups
-  # GET /groups.json
+
+  def intro
+  end
+
   def top
     @groups = []
     @group = Group.new
