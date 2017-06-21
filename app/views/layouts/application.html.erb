@@ -7,10 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <header class="header">
-   <a href = "/groups">グループ一覧</a>
-   <%= link_to '全タイトル一覧', products_path %>
-</header>
+    <header class="header__ clearfix">
+    <p class="top-message">
+    <%= link_to "漫才データベース", "/" %>
+    </p>
+     <% if user_signed_in? %>
+       <%= button_to "マイページ", "/users/#{current_user.id}", method: :get, class: "btn-mypage" %>
+      <% end %>
+    </header>
 <%= yield %>
 
   <footer class="funcbtn">
@@ -25,20 +29,24 @@
       <i class="icon ion-compose"></i>
       </a>
     </div>
-    <div class="funcbtn-contents">
-      <a class="mypagelink" href="/users/<%= current_user.id %>">
-      <i class="icon ion-person"></i>
-      </a>
-    </div>
   <% else %>
     <div class="funcbtn-contents">
-      <%= link_to "ログイン", new_user_session_path, class: 'loginlink' %>
-    </div>
-    <div class="funcbtn-contents">
-      <%= link_to "新規登録", new_user_registration_path, class: 'signinlink' %>
+      <a class="mypagelink" href= "/users/sign_in", method="get">
+      <i class="icon ion-compose"></i>
+      </a>
     </div>
   <% end %>
+    <div class="funcbtn-contents">
+      <a class="grouplink" href="/groups/", method="get">
+      <i class="icon ion-android-people"></i>
+      </a>
+    </div>
+    <div class="funcbtn-contents">
+      <a class="titlelink" href="/products/", method="get">
+      <i class="icon ion-document-text"></i>
+      </a>
+    </div>
   </footer>
-
+<!-- copy -->
 </body>
 </html>

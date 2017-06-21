@@ -87,7 +87,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.save
-    binding.pry
+    # binding.pry
     product = params.require(:group)[:product]
     if product
       @product = Product.find(product[:product_id])

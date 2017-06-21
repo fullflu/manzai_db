@@ -29,16 +29,22 @@ class CommentsController < ApplicationController
         # binding.pry
         new_comment = Comment.create(create_params)
         # binding.pry
-        #comment_view = Comment.find(params[:prev_id])
+        prev_id = params.require("comment")[:prev_id]
+        if prev_id.present?
+            # binding.pry
+            comment_view = Comment.find(prev_id)
+        end
         #comment_view.update(post_id: )
         # redirect_to controller: :products, action: :index, group_id: Product.find(params[:product_id]).group_id
-        if new_comment.prev_id
-            update_comment = Comment.find(new_comment.prev_id)
-            update_comment.update_attribute(:post_id, new_comment.id)
-        end
-        if new_comment.post_id
-            update_comment = Comment.find(new_comment.post_id)
-            update_comment.update_attribute(:prev_id, new_comment.id)
+        if new_comment.id
+            if new_comment.prev_id
+                update_comment = Comment.find(new_comment.prev_id)
+                update_comment.update_attribute(:post_id, new_comment.id)
+            end
+            if new_comment.post_id
+                update_comment = Comment.find(new_comment.post_id)
+                update_comment.update_attribute(:prev_id, new_comment.id)
+            end
         end
         redirect_to controller: :products, action: :show, id: params[:product_id]
     end

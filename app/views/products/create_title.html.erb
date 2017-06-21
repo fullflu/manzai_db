@@ -5,7 +5,7 @@
 <%= form_for [@group, @product] do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <p><%= @product.errors.count %> 個のエラーがあります:</p>
 
       <ul>
       <% @product.errors.full_messages.each do |message| %>
