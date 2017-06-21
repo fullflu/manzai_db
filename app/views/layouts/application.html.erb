@@ -8,9 +8,10 @@
 </head>
 <body>
     <header class="header">
-   <a href = "/groups">グループ一覧</a>
-   <%= link_to '全タイトル一覧', products_path %>
-</header>
+     <% if user_signed_in? %>
+       <%= button_to "マイページ", "/users/#{current_user.id}", method: :get, class: "btn-mypage" %>
+      <% end %>
+    </header>
 <%= yield %>
 
   <footer class="funcbtn">
@@ -25,23 +26,23 @@
       <i class="icon ion-compose"></i>
       </a>
     </div>
-    <div class="funcbtn-contents">
-      <a class="mypagelink" href="/users/<%= current_user.id %>">
-      <i class="icon ion-person"></i>
-      </a>
-    </div>
   <% else %>
     <div class="funcbtn-contents">
-      <a class="mypagelink" href= "/users/sign_up", method="get">
-      <i class="icon ion-android-person-add"></i>
-      </a>
-    </div>
-    <div class="funcbtn-contents">
       <a class="mypagelink" href= "/users/sign_in", method="get">
-      <i class="icon ion-person"></i>
+      <i class="icon ion-compose"></i>
       </a>
     </div>
   <% end %>
+    <div class="funcbtn-contents">
+      <a class="grouplink" href="/groups/", method="get">
+      <i class="icon ion-android-people"></i>
+      </a>
+    </div>
+    <div class="funcbtn-contents">
+      <a class="titlelink" href="/products/", method="get">
+      <i class="icon ion-document-text"></i>
+      </a>
+    </div>
   </footer>
 
 </body>
