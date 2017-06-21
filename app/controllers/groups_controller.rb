@@ -1,9 +1,10 @@
 class GroupsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show, :top]
+  before_action :move_to_index, except: [:index, :show, :top, :intro]
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
 
   def intro
+    # binding.pry
   end
 
   def top

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       get 'search_group'
       get 'search_top'
       get 'search_group_top'
-      get 'intro'
+      # get 'intro'
     end
   end
   get 'products' => 'products#index_all'
@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   delete 'products/:id/comments/:id/likes' => 'likes#destroy'
 
   post 'products/download_db' => 'products#download_db'
+  get '/intro' => 'groups#intro'
+
+  #get 'groups/intro' => 'groups#intro'
 
   # resources :groups
   # resources :products do

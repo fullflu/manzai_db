@@ -10,7 +10,7 @@
     <header class="header__ clearfix">
     <p class="top-message">
     <%= link_to "笑い箱", "/" %>
-    <%= link_to "About", "/groups/intro", method: :get %>
+    <%= link_to "About", "/intro", method: :get %>
     </p>
      <% if user_signed_in? %>
        <%= button_to "マイページ", "/users/#{current_user.id}", method: :get, class: "btn-mypage" %>
