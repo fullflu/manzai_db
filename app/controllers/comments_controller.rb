@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     end
 
     def add
+        # binding.pry
         @post_comment = Comment.find(params[:id])
         @product = Product.find(@post_comment.product_id)
         if current_user.id != @product.user_id
