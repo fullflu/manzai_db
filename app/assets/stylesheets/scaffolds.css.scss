@@ -27,8 +27,10 @@ a {
 
 header {
   background-color: rgb(240,240,240);
-  height: 80px;
+  height: 100px;
+  margin: 5px;
 }
+
 
 .funcbtn{
   position: fixed;
@@ -134,6 +136,20 @@ fontsize: 30px;
   }
 }
 
+.top-message{
+  float: left;
+  margin: 15px;
+  a{
+    font-size: 50px;
+  }
+}
+
+.btn-mypage{
+    //margin: 20px 0 0 700px;
+    margin: 15px;
+    font-size: 35px;
+    float: right;
+}
 
 
 .button {

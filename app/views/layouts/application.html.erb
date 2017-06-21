@@ -7,7 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <header class="header">
+    <header class="header__ clearfix">
+    <p class="top-message">
+    <%= link_to "漫才データベース", "/" %>
+    </p>
      <% if user_signed_in? %>
        <%= button_to "マイページ", "/users/#{current_user.id}", method: :get, class: "btn-mypage" %>
       <% end %>
@@ -44,6 +47,6 @@
       </a>
     </div>
   </footer>
-
+<!-- copy -->
 </body>
 </html>
