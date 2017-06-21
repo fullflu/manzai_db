@@ -2,8 +2,8 @@
           <article class="section">
             <div class="container">
               <header class="header header--section">
-                <p class="text-middle">
-                投稿するグループを検索
+                <p class="text-group-search">
+                 <%="投稿するグループを検索"%>
                 </p>
               </header>
               <%= form_tag('/groups/search_group', method: :get) do %>
@@ -14,8 +14,8 @@
           <article class="section">
             <div class="container">
               <header class="header header--section">
-                <p class="text-middle">
-                検索結果
+                <p class="text-group-search">
+                <%= "検索結果" %>
                 </p>
               </header>
           <% if @groups.length > 0 %>
@@ -31,8 +31,11 @@
              <% end %>
             <% end%>
             </div>
+              <p class="text-group-search">
+             <%="新しくグループを作成して投稿しますか？"%>
+            </p>
             <p class="create-group">
-            新しくグループを作成して投稿しますか？ <%= button_to 'グループを作成', "/groups/new", method: :get, class: "btn-create-group" %>
+             <%= button_to 'グループを作成', "/groups/new", method: :get, class: "btn-create-group" %>
             </p>
           </article>
         </div>

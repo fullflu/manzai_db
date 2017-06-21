@@ -6,7 +6,7 @@
     p{
     text-align: left;
     }
-    background-color: red;
+    //background-color: red;
 }
 
 .search-results{
@@ -15,6 +15,7 @@
     margin: auto auto;
     //padding: 50px 50px;
     text-align: center;
+    background-color: white;
 }
 
 .btn-create-group{
@@ -32,4 +33,9 @@
  background-color: white;
  margin: 10px auto;
  }
+}
+
+.text-group-search{
+    font-size: 40px;
+    margin: 45px 5px 0 15px;
 }
