@@ -32,10 +32,14 @@
     </div>
   <% else %>
     <div class="funcbtn-contents">
-      <%= link_to "ログイン", new_user_session_path, class: 'loginlink' %>
+      <a class="mypagelink" href= "/users/sign_up", method="get">
+      <i class="icon ion-android-person-add"></i>
+      </a>
     </div>
     <div class="funcbtn-contents">
-      <%= link_to "新規登録", new_user_registration_path, class: 'signinlink' %>
+      <a class="mypagelink" href= "/users/sign_in", method="get">
+      <i class="icon ion-person"></i>
+      </a>
     </div>
   <% end %>
   </footer>
