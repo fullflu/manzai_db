@@ -1,12 +1,12 @@
     <h3>
-    <%="#{@tsukkomi}の発言を挿入してください" %>
+    <%="#{@tsukkomi}の発言を挿入" %>
     </h3>
     <br>
 <div class="contents row">
  <% if @prev_comment %>
    <%= "#{@prev_comment.daihon}（直前の発言）" %>
  <% else %>
-   <%= "これより前の発言はありません" %>
+   <%= "（これより前の発言はありません）" %>
  <% end %>
   <br>
   <br>
@@ -17,11 +17,10 @@
       <%= f.hidden_field :prev_id, :value => @prev_comment_id %>
       <%= f.hidden_field :post_id, :value => @post_comment.id %>
       </div>
-     <%= f.submit("挿入する", class: "btn-update")%>
+     <%= f.submit("挿入", class: "btn-update")%>
     <%= button_to "戻る",@product , class: "btn-update"%>
   <% end %>
   <br>
   <%= "#{@post_comment.daihon}（挿入対象の発言）" %>
 </div>
 <br>
-<%= link_to '台本に戻る', product_path(@product.id) %>
