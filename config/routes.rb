@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users, only: :show
+  # resources :passwords
   resources :groups, shallow: true do
     resources :products do
       collection do

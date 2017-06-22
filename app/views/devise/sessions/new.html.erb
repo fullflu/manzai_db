@@ -1,26 +1,37 @@
-<h2>Log in</h2>
+<div class="devises">
+<br>
+
+<h3>ログイン</h3>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.label :email, "メールアドレス",class: "edit-label" %><br />
+    <%= f.email_field :email, autofocus: true, class: "edit-field" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.label :password, "パスワード" ,class: "edit-label" %>
+    <% if @minimum_password_length %>（
+      <%= @minimum_password_length %>文字以上。）
+    <% end %>
+    <br />
+    <%= f.password_field :password, autocomplete: "off" , class: "edit-field"%>
   </div>
 
   <% if devise_mapping.rememberable? -%>
     <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.check_box :remember_me, class: "check-remember" %>
+      <%= f.label :remember_me, "この情報を記憶しますか？", class: "edit-label"  %>
     </div>
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "ログインする" %>
+    <%= f.submit("ログインする", class: "btn-create-group") %>
   </div>
 <% end %>
+
+</div>
+
+<br>
 
 <%= render "devise/shared/links" %>
