@@ -87,18 +87,19 @@ fontsize: 30px;
 
 .header--search_top {
   background-color: white;
-  //margin: 30px;
+  //margin: 0;
   //height: 30px;
     width: 700px;
     p{
     text-align: left;
     font-size: 35px;
     }
+    //padding: 0;
 }
 
 .search_top{
   background-color: white;
-  width: 700px;
+  width: 705px;
   //padding: 0;
   .element{
   font-size: 30px;
@@ -127,7 +128,7 @@ fontsize: 30px;
 
 .search_title{
   background-color: white;
-  width: 700px;
+  width: 705px;
   //padding: 0;
   .element{
   font-size: 30px;
@@ -158,4 +159,8 @@ fontsize: 30px;
   background-color: black;
   color: white;
   border-style: none;
+}
+
+.download-image{
+  width: 800px;
 }

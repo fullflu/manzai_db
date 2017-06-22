@@ -1,0 +1,185 @@
+<br>
+
+<div class="intro">
+<h3 class="head-title">
+ About
+</h3>
+<div class="intro-message">
+<p id=element>
+ 「笑い箱」は、漫才の情報を共有するプラットフォームです。
+ コンビの名前や漫才のタイトルを<strong>検索</strong>したり、
+ 自分で漫才を<strong>投稿</strong>したり、
+ 好きな漫才の台本を<strong>閲覧</strong>・<strong>ダウンロード</strong>することができます。
+ <br><br>
+ <!-- なお、ここでは二人組のグループによる漫才のみを扱うこととします。<br> -->
+ 漫才ファン、書き起こし職人、漫才分析の研究者・・・みなさんで新しい漫才のムーブメントを起こしましょう！
+</p>
+</div>
+
+
+<h3 class="intro-title">
+ ログインしなくてもできること
+</h3>
+<div class="intro-message">
+<p id="element">
+以下の操作はログインの有無にかかわらず行えます
+</p>
+<ul class="intro">
+<li>
+グループやタイトル一覧の閲覧
+</li>
+<li>
+グループやタイトルの検索
+</li>
+<li>
+台本の閲覧
+</li>
+<li>
+台本のダウンロード
+</li>
+</ul>
+</div>
+
+<h3 class="intro-title">
+ ログインしないとできないこと
+</h3>
+<div class="intro-message">
+<p id="element">
+以下の操作を行うにはログインが必要です
+</p>
+<ul>
+<li>
+グループやタイトルの投稿
+</li>
+<li>
+台本の投稿
+</li>
+<li>
+台本へのいいね
+</li>
+</ul>
+</div>
+
+<h3 class="intro-title">
+ 基本機能
+</h3>
+<div class="intro-message">
+<p id="element">
+ブラウザの下に固定されているボタンから、4つの基本機能を利用することができます。左から順に以下のリンクへ飛びます。
+</p>
+<ul>
+<li>
+<strong>ホームへのリンク:</strong> いいね数が多い順にタイトルが並びます。
+</li>
+<li>
+<strong>タイトル、台本の作成リンク:</strong> ログインしていない場合はログイン画面に飛びます。
+</li>
+<li>
+<strong>グループ一覧へのリンク</strong>
+</li>
+<li>
+<strong>タイトル一覧へのリンク</strong>
+</li>
+</ul>
+</div>
+
+<h3 class="intro-title">
+ 検索機能
+</h3>
+<div class="intro-message">
+<p id="element">
+ホームや一覧ページを下にスクロールすると、以下のような検索フォームを発見できると思います。試しにこちらからも検索してみてください！
+</p>
+<div class="intro-search-form">
+<%= render partial: "form_search_top" %>
+</div>
+</div>
+
+<h3 class="intro-title">
+ グループページ
+</h3>
+<div class="intro-message">
+<p id="element">
+グループ一覧やグループ検索画面からグループをクリックすると、そのグループの台本を閲覧することができます。こちらが
+<!-- </p> -->
+<!-- <div class="intro-product-link"> -->
+<%= link_to "ノンスタイルのページ", group_products_path(16), method: :get %>
+<!-- </div> -->
+です。
+<br>
+<br>
+新たにグループを作成するためには、ログインが必要です。作成済みのグループの情報を編集・削除したい場合は、
+<%= link_to "作者","https://github.com/fullflu"%>までご連絡ください。
+<br><br>
+なお、このサービスでは二人組のグループによる漫才のみを扱うこととします。ご了承ください。<br>
+</p>
+</div>
+
+<h3 class="intro-title">
+ タイトルページ
+</h3>
+<div class="intro-message">
+<p id="element">
+タイトル一覧やタイトル検索画面からタイトルをクリックすると、そのタイトルの台本を閲覧することができます。こちらが
+<!-- </p> -->
+<!-- <div class="intro-product-link"> -->
+<%= link_to "テストの台本", product_path(33), method: :get %>
+<!-- </div> -->
+です。ログインしたユーザであれば、台本のセリフにいいねを押すことができます。
+<br>
+<br>
+新たにタイトルを作成するためには、ログインが必要です。ログイン後、左から二番目の作成ボタンを押し、以下の手順で作成できます。
+<ul>
+<li>
+投稿したいタイトルを作ったグループを検索
+</li>
+<li>
+検索にヒットしたらクリック、しなければグループを作成
+</li>
+<li>
+タイトルを作成
+</li>
+</ul>
+なお、ログイン後、グループページから「新しくタイトルを作成」ボタンを押すことでそのグループのタイトルを作成することも可能です。
+</p>
+</div>
+
+<h3 class="intro-title">
+ 台本の投稿
+</h3>
+<div class="intro-message">
+<p id="element">
+タイトルを作成したユーザは、タイトルページから以下の手順で台本を投稿することができます。
+<ul>
+<li>
+セリフがぼけ、つっこみのどちらから始まるか選ぶ
+</li>
+<li>
+発言者が交互になるようにセリフを投稿する
+</li>
+<li>
+直前に挿入、編集、削除を駆使して投稿を整理する
+</li>
+</ul>
+</p>
+</div>
+
+<h3 class="intro-title">
+ 台本ダウンロード機能
+</h3>
+<div class="intro-message">
+<p id="element">
+タイトル一覧、タイトル検索結果、グループ一覧、グループ検索結果のページからは、チェックボックスを用いて欲しい台本をダウンロードできます。
+タイトルページからは、「台本をダウンロード」ボタンを押すことでその台本をダウンロードできます。
+<br><br>
+ダウンロードしたzipファイルを解凍すると、下図のような形式でダウンロードされます。グループごとにフォルダが作成され、各タイトルの台本・つっこみフラグ・いいね数がtsvファイルで保存されます。group_id・product_idと実際のグループ・タイトルの名前はそれぞれgroups.tsvとproducts.tsvで保存されています。
+<!-- <div class="main_img"></div> -->
+<div class="download-image">
+<%= image_tag("download_manzai_db.png",class: "download-image") %>
+</div>
+</p>
+</div>
+
+
+
+
