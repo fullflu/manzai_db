@@ -1,5 +1,4 @@
 <div class="intro">
-<div class="head-about">
 <h3 class="head-title">
  About
 </h3>
@@ -11,7 +10,7 @@
  好きな漫才の台本を<strong>閲覧</strong>・<strong>ダウンロード</strong>することができます。
 </p>
 </div>
-</div>
+
 
 <h3 class="intro-title">
  ログインしなくてもできること
@@ -21,6 +20,9 @@
 以下の操作はログインの有無にかかわらず行えます
 </p>
 <ul class="intro">
+<li>
+グループやタイトル一覧の閲覧
+</li>
 <li>
 グループやタイトルの検索
 </li>
@@ -53,7 +55,96 @@
 </ul>
 </div>
 
-検索、閲覧、ダウンロード方法
+<h3 class="intro-title">
+ 基本機能
+</h3>
+<div class="intro-message">
+<p id="element">
+ブラウザの下に固定されているボタンから、4つの基本機能を利用することができます。左から順に以下のリンクへ飛びます。
+</p>
+<ul>
+<li>
+<strong>ホームへのリンク:</strong> いいね数が多い順にタイトルが並びます。
+</li>
+<li>
+<strong>タイトル・台本の作成リンク:</strong> ログインしていない場合はログイン画面に飛びます。
+</li>
+<li>
+<strong>グループ一覧へのリンク</strong>
+</li>
+<li>
+<strong>タイトル一覧へのリンク</strong>
+</li>
+</ul>
+</div>
+
+<h3 class="intro-title">
+ 検索機能
+</h3>
+<div class="intro-message">
+<p id="element">
+ホームや一覧ページを下にスクロールすると、以下のような検索フォームを発見できると思います。試しにこちらからも検索してみてください！
+</p>
+<div class="intro-search-form">
+<%= render partial: "form_search_top" %>
+</div>
+</div>
+
+<h3 class="intro-title">
+ グループページ
+</h3>
+<div class="intro-message">
+<p id="element">
+グループ一覧やグループ検索画面からグループをクリックすると、そのグループの台本を閲覧することができます。こちらが
+<!-- </p> -->
+<!-- <div class="intro-product-link"> -->
+<%= link_to "ノンスタイルのページ", group_products_path(16), method: :get %>
+<!-- </div> -->
+です。
+<br>
+新たにグループを作成するためには、ログインが必要です。作成済みのグループの情報を編集・削除したい場合は、
+<%= link_to "作者","https://github.com/fullflu"%>までご連絡ください。
+</p>
+</div>
+
+<h3 class="intro-title">
+ タイトルページ
+</h3>
+<div class="intro-message">
+<p id="element">
+タイトル一覧やタイトル検索画面からタイトルをクリックすると、そのタイトルの台本を閲覧することができます。こちらが
+<!-- </p> -->
+<!-- <div class="intro-product-link"> -->
+<%= link_to "テストの台本", product_path(33), method: :get %>
+<!-- </div> -->
+です。
+<br>
+新たにタイトルを作成するためには、ログインが必要です。まず、タイトル
+</p>
+</div>
+
+<h3 class="intro-title">
+ 台本ダウンロード機能
+</h3>
+<div class="intro-message">
+<p id="element">
+ブラウザの下に固定されているボタンから、4つの基本機能を利用することができます。左から順に以下のリンクへ飛びます。
+</p>
+<ul>
+<li>
+グループのページ
+</li>
+<li>
+<strong>台本の投稿リンク:</strong> ログインしていない場合はログイン画面に飛びます。
+</li>
+<li>
+<strong>グループ一覧へのリンク</strong>
+</li>
+</ul>
+</div>
+
+
+閲覧、ダウンロード方法
 投稿方法、注意点
 いいね方法
 

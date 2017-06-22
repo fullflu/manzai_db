@@ -1,17 +1,17 @@
 .intro{
     //text-align: center;
-    margin: 20px;
+    //margin: 20px;
     .head-title{
         text-align: center;
     }
-    .head-about{
+    h3{
         //margin: 20px;
-        //text-align: center;
+        text-align: center;
     }
     .intro-message{
      font-size: 35px;
-     margin: 0px 30px;
-     padding: 0 30px;
+     margin: 0px 50px;
+     padding: 20px 30px;
      #element{
      //text-align: center;
      }
@@ -28,6 +28,14 @@
         margin: 0 0 0 70px;
         //padding: 0 0 0 0px;
        // }
+    }
+    .intro-search-form{
+     //background-color: red;
+     //margin: 0 50px;
+     border: solid 1px;
+    }
+    .intro-product-link{
+    text-align: center;
     }
 }
 

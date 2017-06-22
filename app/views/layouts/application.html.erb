@@ -14,7 +14,11 @@
     </p>
      <% if user_signed_in? %>
        <%= button_to "マイページ", "/users/#{current_user.id}", method: :get, class: "btn-mypage" %>
+     <% else %>
+       <%= button_to "ログイン", "/users/sign_in", method: :get, class: "btn-mypage" %>
+       <%= button_to "新規登録", "/users/sign_up", method: :get, class: "btn-mypage" %>
       <% end %>
+
     </header>
 <%= yield %>
 
