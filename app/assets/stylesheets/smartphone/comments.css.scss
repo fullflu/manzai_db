@@ -1,0 +1,66 @@
+
+@media  (max-width: 1020px){
+
+.head-comment{
+    font-size: 35px;
+}
+
+.comments{
+    border: solid 1px;
+    .member-name{
+        font-size: 30px;
+    }
+
+    .comment-element{
+        color: blue;
+        font: bold;
+    }
+
+    .clearfix:after{
+        display:block;
+        content:"";
+        clear: both;
+    }
+
+    .fixer{
+        float: left;
+    }
+}
+
+#like-buttons{
+    float: right;
+    //margin_right: 35px;
+}
+
+.btn-likes{
+    //float: right;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.daihon-input{
+    #element{
+    width: 700px;
+    font-size: 30px;
+    margin: 5px 10px;
+    }
+}
+
+.comment-tsukkomi{
+    background-color: #E0FFFF;
+}
+
+.comment-boke{
+    background-color: #FFE4E1;
+}
+
+input[type=radio]{
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    margin: 15px 15px 30px;
+}
+}

@@ -1,0 +1,174 @@
+@media  (max-width: 1020px){
+
+
+html{
+}
+
+ @import 'ionicons';
+
+body {
+  background-color: rgb(240,240,240);
+  font-size: 50px;
+  color: #333;
+  margin: 0 0 200px;
+  //margin_bottom: 100px;
+}
+h1,h2,h3,h4,h5,h6,p {
+  padding: 10px 0;
+  margin: 0;
+  //margin_bottom: 100px;
+}
+
+
+a {
+    //text-decoration: none;
+    line-height: 40px;
+    color: black;
+    border: 1px;
+    padding: 5px;
+    font-size: 40px;
+}
+
+header {
+  background-color: rgb(240,240,240);
+  height: 100px;
+  margin: 5px;
+}
+
+
+.funcbtn{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 60;
+  display: flex;
+  justify-content: space-around;
+  .funcbtn-contents{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 25%;
+    height: 140px;
+    z-index: 70;
+    background-color: #A9A9A9;
+    font-size: 70px;
+    a{
+        text-decoration: none;
+        margin: 0 auto;
+        color: #fff;
+        font-size: 70px;
+    }
+    a:active, a:focus{
+        color: #FFDAB9;
+    }
+  }
+}
+
+.search__query{
+    font-size: 40px;
+}
+
+.btn-search{
+  //height: 20px;
+  font-size: 40px;
+  //border-radius: 5px;
+  -webkit-appearance: 5px;
+}
+
+.field{
+textarea {
+width: 250px;
+height: 10px;
+fontsize: 30px;
+}
+}
+
+.search {
+  margin: 30px 10px;
+  //border: solid 2px;
+}
+
+
+.header--search_top {
+  background-color: white;
+  //margin: 0;
+  //height: 30px;
+    width: 700px;
+    p{
+    text-align: left;
+    font-size: 35px;
+    }
+    //padding: 0;
+}
+
+.search_top{
+  background-color: white;
+  width: 705px;
+  //padding: 0;
+  .element{
+  font-size: 30px;
+  width: 500px;
+  margin: 0 20px 0 15px;
+  }
+}
+
+.text-middle{
+  text-align: center;
+  //margin: auto auto;
+  //padding: 0;
+
+}
+
+.header--search_title {
+  background-color: white;
+  //margin: 30px;
+  //height: 30px;
+    width: 700px;
+    p{
+    text-align: left;
+    font-size: 35px;
+    }
+}
+
+.search_title{
+  background-color: white;
+  width: 705px;
+  //padding: 0;
+  .element{
+  font-size: 30px;
+  width: 500px;
+  margin: 0 20px 0 15px;
+  }
+}
+
+.top-message{
+  float: left;
+  margin: 15px;
+  a{
+    font-size: 50px;
+  }
+}
+
+.btn-mypage{
+    //margin: 20px 0 0 700px;
+    margin: 15px;
+    font-size: 35px;
+    float: right;
+}
+
+
+.button {
+  height: 30px;
+  width: 40px;
+  background-color: black;
+  color: white;
+  border-style: none;
+}
+
+.download-image{
+  width: 800px;
+}
+
+
+}
+

@@ -1,3 +1,5 @@
+@media  (min-width: 1020px){
+
 .user_page_head{
     margin: 0 auto;
     text-align: center;
@@ -21,21 +23,22 @@
 .edit{
      //position: absolute;
     //top: 170px;
-    left: 20px;
-    float: left;
+    right: 20px;
+    float: right;
     margin: 5px auto;
 }
 
 
 .products{
-    margin: 30px auto;
+    margin: 5px auto;
     .user-posts{
     font-weight: bold;
     }
     .user-products{
      color: black;
      background-color: white;
-     margin: 10px auto;
+     margin: 5px auto;
+     padding: 5px;
     }
 }
 
@@ -45,9 +48,9 @@
 
 .devises{
     .field{
-    font-size: 35px;
+    font-size: 20px;
     //margin: 0 0 0 20px;
-    margin: 10px 30px;
+    margin: 5px 5px;
     }
     .check-remember{
         width: 40px;
@@ -55,4 +58,5 @@
         //font-size: 20px;
         margin: 5px 25px 0;
     }
+}
 }
