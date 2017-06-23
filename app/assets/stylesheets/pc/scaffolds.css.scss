@@ -1,3 +1,6 @@
+@media  (min-width: 1020px){
+
+
 html{
 }
 
@@ -5,7 +8,7 @@ html{
 
 body {
   background-color: rgb(240,240,240);
-  font-size: 50px;
+  font-size: 20px;
   color: #333;
   margin: 0 0 200px;
   //margin_bottom: 100px;
@@ -16,18 +19,19 @@ h1,h2,h3,h4,h5,h6,p {
   //margin_bottom: 100px;
 }
 
+
 a {
     //text-decoration: none;
-    line-height: 40px;
+    line-height: 5px;
     color: black;
     border: 1px;
-    padding: 5px;
-    font-size: 40px;
+    //padding: 5px;
+    font-size: 18px;
 }
 
 header {
   background-color: rgb(240,240,240);
-  height: 100px;
+  height: 50px;
   margin: 5px;
 }
 
@@ -44,15 +48,15 @@ header {
     display: flex;
     align-items: center;
     width: 25%;
-    height: 140px;
+    height: 70px;
     z-index: 70;
     background-color: #A9A9A9;
-    font-size: 70px;
+    font-size: 50px;
     a{
         text-decoration: none;
         margin: 0 auto;
         color: #fff;
-        font-size: 70px;
+        font-size: 50px;
     }
     a:active, a:focus{
         color: #FFDAB9;
@@ -61,12 +65,12 @@ header {
 }
 
 .search__query{
-    font-size: 40px;
+    font-size: 20px;
 }
 
 .btn-search{
   //height: 20px;
-  font-size: 40px;
+  font-size: 20px;
   //border-radius: 5px;
   -webkit-appearance: 5px;
 }
@@ -75,12 +79,12 @@ header {
 textarea {
 width: 250px;
 height: 10px;
-fontsize: 30px;
+fontsize: 20px;
 }
 }
 
 .search {
-  margin: 30px 10px;
+  margin: 5px 5px;
   //border: solid 2px;
 }
 
@@ -92,7 +96,7 @@ fontsize: 30px;
     width: 700px;
     p{
     text-align: left;
-    font-size: 35px;
+    font-size: 20px;
     }
     //padding: 0;
 }
@@ -102,9 +106,9 @@ fontsize: 30px;
   width: 705px;
   //padding: 0;
   .element{
-  font-size: 30px;
+  font-size: 18px;
   width: 500px;
-  margin: 0 20px 0 15px;
+  margin: 0 5px 0 15px;
   }
 }
 
@@ -122,7 +126,7 @@ fontsize: 30px;
     width: 700px;
     p{
     text-align: left;
-    font-size: 35px;
+    font-size: 20px;
     }
 }
 
@@ -131,24 +135,27 @@ fontsize: 30px;
   width: 705px;
   //padding: 0;
   .element{
-  font-size: 30px;
+  font-size: 18px;
   width: 500px;
-  margin: 0 20px 0 15px;
+  margin: 0 5px 0 15px;
   }
 }
 
 .top-message{
   float: left;
   margin: 15px;
+  padding: 5 30px;
   a{
-    font-size: 50px;
+    font-size: 30px;
   }
 }
 
 .btn-mypage{
     //margin: 20px 0 0 700px;
-    margin: 15px;
-    font-size: 35px;
+    margin: 30px 80px 0 0;
+    font-size: 150px;
+    height: 350px;
+    width: 120px;
     float: right;
 }
 
@@ -164,3 +171,7 @@ fontsize: 30px;
 .download-image{
   width: 800px;
 }
+
+
+}
+

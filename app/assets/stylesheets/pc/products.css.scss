@@ -1,9 +1,11 @@
+@media  (min-width: 1020px){
+
 .field{
     //font-size: 30px;
 }
 
 .title-field{
-    font-size: 40px;
+    font-size: 30px;
     width: 700px;
     margin: 10px 10px 20px;
 }
@@ -16,27 +18,29 @@
 .head-create-title{
     margin: 10px 0;
     a{
-    font-size: 50px;
+    font-size: 18px;
     }
 }
 
 table{
     width: 95%;
     margin: 5px auto;
-    font-size: 25px;
+    padding: 5px;
+    font-size: 18px;
     //padding: 10px 0;
     a{
-    font-size: 35px;
+    font-size: 18px;
     }
 
     td{
-        padding: 15px 5px;
+        padding: 0;
         //margin: 30px 0;
     }
 }
 
 th{
-    font-size: 30px;
+    font-size: 20px;
+    //padding: 5px;
 }
 
 .check_all_class{
@@ -47,7 +51,7 @@ th{
 }
 
 label{
-font-size: 30px;
+font-size: 20px;
 }
 
 .check{
@@ -83,32 +87,34 @@ td{
 
 
 .group-member{
-    font-size: 30px;
+    font-size: 20px;
+    margin: 0;
 }
 
 .before-edit{
-    font-size: 35px;
-    margin: 20px;
+    font-size: 20px;
+    margin: 10px;
 }
 
 .edit-field{
-    margin: 30px;
-    font-size: 35px;
+    margin: 10px;
+    font-size: 20px;
 }
 
 .group-update{
     margin: 10px;
-    font-size: 40px;
+    font-size: 20px;
     width: 700px;
 }
 
 .product-update{
     margin: 10px;
-    font-size: 40px;
+    font-size: 20px;
     width: 700px;
 }
 
 .btn-update{
-    font-size: 40px;
+    font-size: 20px;
     margin: 10px 10px 50px 30px;
+}
 }

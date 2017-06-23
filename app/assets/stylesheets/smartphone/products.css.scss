@@ -1,0 +1,117 @@
+@media  (max-width: 1020px){
+
+.field{
+    //font-size: 30px;
+}
+
+.title-field{
+    font-size: 40px;
+    width: 700px;
+    margin: 10px 10px 20px;
+}
+
+.btn-create-title{
+    font-size: 40px;
+    margin: 0 10px;
+}
+
+.head-create-title{
+    margin: 10px 0;
+    a{
+    font-size: 50px;
+    }
+}
+
+table{
+    width: 95%;
+    margin: 5px auto;
+    font-size: 25px;
+    //padding: 10px 0;
+    a{
+    font-size: 35px;
+    }
+
+    td{
+        padding: 15px 5px;
+        //margin: 30px 0;
+    }
+}
+
+th{
+    font-size: 30px;
+}
+
+.check_all_class{
+    width: 30px;
+    height: 30px;
+    //font-size: 20px;
+    margin: 5px 15px 5px;
+}
+
+label{
+font-size: 30px;
+}
+
+.check{
+    width: 30px;
+    height: 30px;
+}
+
+.btn-download{
+    margin: 15px 15px;
+    font-size: 30px;
+}
+
+td{
+    border: solid .5px;
+    //margin: 5px 10px;
+    background-color: white;
+    text-align: center;
+    padding: 10px 5px;
+    //font-size: 25px;
+}
+.top-index{
+     //display: block;
+     color: black;
+     //background-color: white;
+
+     border: solid 19px;
+
+     .element{
+     padding: 10px 10px;
+     margin: 10px auto;
+     }
+}
+
+
+.group-member{
+    font-size: 30px;
+}
+
+.before-edit{
+    font-size: 35px;
+    margin: 20px;
+}
+
+.edit-field{
+    margin: 30px;
+    font-size: 35px;
+}
+
+.group-update{
+    margin: 10px;
+    font-size: 40px;
+    width: 700px;
+}
+
+.product-update{
+    margin: 10px;
+    font-size: 40px;
+    width: 700px;
+}
+
+.btn-update{
+    font-size: 40px;
+    margin: 10px 10px 50px 30px;
+}
+}

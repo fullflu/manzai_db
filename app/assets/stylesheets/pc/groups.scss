@@ -1,43 +1,55 @@
+@media  (min-width: 1020px){
 
 .header--section{
-    margin: 15px 0;
+    //margin: 15px 0;
     padding: 0 5px;
     width: 700px;
-    p{
+
     text-align: left;
-    }
     //background-color: red;
 }
 
 .search-results{
     //display: inline;
     font-weight: bold;
-    margin: 10px auto;
+    margin: 5px 15px;
     //padding: 50px 50px;
-    text-align: center;
+    //text-align: center;
     background-color: white;
+    padding: 5px;
 }
 
 .btn-create-group{
-    margin: 30px 10px;
-    font-size: 40px;
+    margin: 10px 10px;
+    font-size: 1.4em;
+    height: 50px;
 }
 
 .new-group-field{
     font-size: 30px;
 }
 
+.field{
+    label{
+    font-size: 20px;
+    }
+}
+
 .group-index{
  .element{
  color: black;
  background-color: white;
- margin: 10px auto;
- text-align: center;
+ margin: 5px 10px;
+ //text-align: center;
+  padding: 5px;
+
  }
 }
 
 .text-group-search{
-    font-size: 45px;
+    font-size: 20px;
     font-weight: bold;
-    margin: 55px 5px 0 15px;
+    margin: 35px 15px 0 15px;
+}
+
 }
