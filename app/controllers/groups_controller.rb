@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show, :top, :intro]
+  before_action :move_to_index, except: [:index, :show, :top, :intro, :search_top]
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
 
